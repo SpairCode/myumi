@@ -1,0 +1,16 @@
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #f2f2f2;
+}
+
+.errorTips {
+  font-size: 50px;
+}
+
+.errorTips > span:nth-child(2) {
+  color: #ff3535;
+}
