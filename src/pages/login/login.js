@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './index.css'
+import styles from './login.css'
 import router from 'umi/router'
 import { Form, Icon, Input, Button, Checkbox, message } from 'antd'
 
