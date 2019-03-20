@@ -3,7 +3,15 @@ import PropTypes from 'prop-types'
 import { Table, Popconfirm, Button } from 'antd'
 
 const ProductList = ({ onDelete, products }) => {
-
+  const product = [{ 
+    name: 'antd', 
+    id: 1,
+    key: 1 
+  }, { 
+    name: 'antds', 
+    id: 2,
+    key: 2 }
+  ]
   const columns = [{
     title: 'Name',
     dataIndex: 'name',
@@ -11,7 +19,7 @@ const ProductList = ({ onDelete, products }) => {
     title: 'Actions',
     render: (text, record) => {
       return (
-        <Popconfirm title="Delete?" onConfirm={() => onDelete(record.id)}>
+        <Popconfirm title="Delete?" onConfirm={() => onDelete(record, record.id)}>
           <Button>Delete</Button>
         </Popconfirm>
       );
@@ -19,11 +27,11 @@ const ProductList = ({ onDelete, products }) => {
   }]
   return (
     <Table
-      dataSource={products}
+      dataSource={product}
       columns={columns}
     />
-  );
-};
+  )
+}
 
 ProductList.propTypes = {
   onDelete: PropTypes.func.isRequired,
