@@ -19,6 +19,9 @@ export default function(props) {
             Push => ()
           </Button>
         </li>
+        <li>
+        <a href="http://www.uptechina.com/UniWebView.unitypackage" class="download"> Quick DownLoad </a>
+        </li>
       </ul>
     </div>
   )
