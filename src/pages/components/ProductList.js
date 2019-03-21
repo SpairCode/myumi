@@ -1,17 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'dva'
 import { Table, Popconfirm, Button } from 'antd'
 
 const ProductList = ({ onDelete, products }) => {
-  const product = [{ 
-    name: 'antd', 
-    id: 1,
-    key: 1 
-  }, { 
-    name: 'antds', 
-    id: 2,
-    key: 2 }
-  ]
   const columns = [{
     title: 'Name',
     dataIndex: 'name',
@@ -27,7 +19,7 @@ const ProductList = ({ onDelete, products }) => {
   }]
   return (
     <Table
-      dataSource={product}
+      dataSource={products}
       columns={columns}
     />
   )
@@ -38,4 +30,4 @@ ProductList.propTypes = {
   products: PropTypes.array.isRequired,
 };
 
-export default ProductList
+export default connect(({ products }) => ({ products }))(ProductList)

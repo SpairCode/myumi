@@ -13,8 +13,62 @@
     font-size: 50px;
 }
 
-.errorTips>span:nth-child(2) {
+.errorTips > span:nth-child(2) {
     color: #ff3535;
 }
 
 /* 404 Page End */
+
+/* Index Page Begin */
+.normal {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.banner {
+  background-color: #ccc;
+  height: 400px;
+  line-height: 400px;
+  font-size: 60px;
+}
+
+.banner > .ant-carousel {
+  width: 80%;
+  height: 400px;
+  margin: 0px auto;
+}
+
+.list {
+  width: 100%;
+  height: calc(100% - 400px);
+  background-color: #f2f2f2;
+}
+
+.list > div {
+  width: 100%;
+  height: 100%;
+  background-color: #ebeef6;
+}
+
+.list > div > div {
+  height: 300px;
+  border-radius: 10px;
+}
+
+.orange {
+  background-image: linear-gradient(135deg, #ff5353, #ffae79);
+}
+
+.purple {
+  background-image: linear-gradient(135deg, #914beb, #d783fb);
+}
+
+.blue {
+  background-image: linear-gradient(135deg, #2587ff, #69ceff);
+}
+
+ul, ol {
+  margin: 0px !important;
+}
+/* Index Page End */

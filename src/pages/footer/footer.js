@@ -5,7 +5,7 @@ class Footers extends React.Component {
   render () {
     return (
       <div className={style.footer}>
-        <p data-design={`Design By Fan`} data-email="spairfan@126.com"></p>
+        <p data-design={`Design By All`} data-email="spairfan@126.com"></p>
       </div>
     )
   }
