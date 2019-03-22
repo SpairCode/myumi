@@ -1,6 +1,7 @@
 import styles from './index.css';
 import withRouter from 'umi/withRouter'
 import { connect } from 'dva'
+import Link  from 'umi/link'
 import { Layout, Menu, Icon, Badge, Avatar, Dropdown } from 'antd'
 
 function BasicLayout(props) {
@@ -18,7 +19,7 @@ function BasicLayout(props) {
         </Menu.Item>
         <Menu.Divider />
         <Menu.Item>
-          <Icon type="logout" /> 退出登录
+          <Link to='/login/login'> <Icon type="logout" /> 退出登录 </Link>
         </Menu.Item>
       </Menu>
     )
@@ -36,22 +37,22 @@ function BasicLayout(props) {
                 theme="light"
               >
                 <div className="logo" />
-                <Menu theme="light" mode="inline" defaultSelectedKeys={['4']}>
+                <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
                   <Menu.Item key="1">
-                    <Icon type="user" />
-                    <span className="nav-text">nav 1</span>
+                    <Icon type="bars" />
+                    <span className="nav-text"> <Link to='/analysis/analysis'> 参会列表 </Link> </span>
                   </Menu.Item>
                   <Menu.Item key="2">
-                    <Icon type="video-camera" />
-                    <span className="nav-text">nav 2</span>
+                    <Icon type="appstore" />
+                    <span className="nav-text"> 会议管理 </span>
                   </Menu.Item>
                   <Menu.Item key="3">
-                    <Icon type="upload" />
-                    <span className="nav-text">nav 3</span>
+                    <Icon type="cluster" />
+                    <span className="nav-text"> 组织架构 </span>
                   </Menu.Item>
                   <Menu.Item key="4">
-                    <Icon type="user" />
-                    <span className="nav-text">nav 4</span>
+                    <Icon type="setting" />
+                    <span className="nav-text"> 系统设置 </span>
                   </Menu.Item>
                 </Menu>
               </Sider>
