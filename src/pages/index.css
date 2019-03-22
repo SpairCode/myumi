@@ -26,31 +26,6 @@
   overflow: hidden;
 }
 
-.antWH {
-  width: 100%;
-  height: 100%;
-}
-
-.antWH > aside {
-  box-shadow: -10px 0px 30px 5px rgba(0, 0, 0, 0.4);
-}
-
-.header > span {
-  margin: 0px 20px; 
-}
-
-.orange {
-  background-image: linear-gradient(135deg, #ff5353, #ffae79);
-}
-
-.purple {
-  background-image: linear-gradient(135deg, #914beb, #d783fb);
-}
-
-.blue {
-  background-image: linear-gradient(135deg, #2587ff, #69ceff);
-}
-
 ul, ol {
   margin: 0px !important;
 }

@@ -2,7 +2,6 @@ import styles from './index.css';
 import withRouter from 'umi/withRouter'
 import { connect } from 'dva'
 import { Layout, Menu, Icon, Badge, Avatar, Dropdown } from 'antd'
-import "antd/dist/antd.css"
 
 function BasicLayout(props) {
   if (props.location.pathname === '/login/login' || props.location.pathname === '/404') {
@@ -73,14 +72,14 @@ function BasicLayout(props) {
                   </div>
                 </Header>
                 {/* Gobal Content */}
-                <Content style={{ margin: '24px 16px 0', height: '100%' }}>
-                  <div style={{ padding: 24, background: '#fff', height: '100%' }}>
+                <Content style={{ margin: '50px 50px 0', height: '100%' }}>
+                  <div style={{ height: '100%' }}>
                     { props.children }
                   </div>
                 </Content>
                 {/* Gobal Footer */}
                 <Footer style={{ textAlign: 'center', backgroundColor: '#ebeef6' }}>
-                  AntD & UmiJS & Dva
+                  AntD & UmiJS & Dva & Mock
                 </Footer>
               </Layout>
             </Layout>
