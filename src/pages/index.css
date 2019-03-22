@@ -26,34 +26,17 @@
   overflow: hidden;
 }
 
-.banner {
-  background-color: #ccc;
-  height: 400px;
-  line-height: 400px;
-  font-size: 60px;
-}
-
-.banner > .ant-carousel {
-  width: 80%;
-  height: 400px;
-  margin: 0px auto;
-}
-
-.list {
-  width: 100%;
-  height: calc(100% - 400px);
-  background-color: #f2f2f2;
-}
-
-.list > div {
+.antWH {
   width: 100%;
   height: 100%;
-  background-color: #ebeef6;
 }
 
-.list > div > div {
-  height: 300px;
-  border-radius: 10px;
+.antWH > aside {
+  box-shadow: -10px 0px 30px 5px rgba(0, 0, 0, 0.4);
+}
+
+.header > span {
+  margin: 0px 20px; 
 }
 
 .orange {
