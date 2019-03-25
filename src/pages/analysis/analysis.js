@@ -1,8 +1,55 @@
 import React from 'react'
 import styles from './analysis.css'
 import { Row, Col, Icon, Table } from 'antd'
+// import { queryBrowseData } from '../../../mock/api'
+import axios from 'axios'
 
 class Analysis extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      list: [],
+      listArray: []
+    }
+  }
+
+  componentDidMount () {
+    this.queryListData()
+  }
+
+  queryListData = () => {
+    axios('/api/analysis/browse', {
+      method: 'GET'
+    }).then((res) => {
+      if (res.status === 200) {
+        this.setState({
+          list: res.data.list,
+          listArray: res.data.listArray
+        })
+      }
+    })
+  }
+  // Crad Data Render
+  listCard = () => {
+    const list = this.state.list
+    const nameList = this.state.listArray
+    console.log(nameList)
+    const listItem = list.map((list, key) =>
+      <Col className={[key === 0||3 ? `${styles.orange}` : '', key === 1 ? `${styles.purple}` : '', key === 2 ? `${styles.blue}` : '']} span={4} title={`${nameList[key]} : ${list.number}`}>
+        <div className={styles.listCard}>
+          <div> { nameList[key] } </div>
+          <div> { list.number } </div>
+        </div>
+      </Col>
+    )
+    return (
+      <Row type="flex" justify="space-between">
+        { listItem }
+      </Row>
+    )
+  }
+
   render () {
     const columns = [{
       title: 'Name',
@@ -20,56 +67,6 @@ class Analysis extends React.Component {
       name: 'John Brown',
       age: 32,
       address: 'New York No. 1 Lake Park',
-    }, {
-      key: '8',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-    }, {
-      key: '9',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    }, {
-      key: '10',
-      name: 'Disabled User',
-      age: 99,
-      address: 'Sidney No. 1 Lake Park',
-    }, {
-        key: '11',
-        name: 'Disabled User',
-        age: 99,
-        address: 'Sidney No. 1 Lake Park',
-    }, {
-        key: '12',
-        name: 'Disabled User',
-        age: 99,
-        address: 'Sidney No. 1 Lake Park',
-    }, {
-      key: '13',
-      name: 'Disabled User',
-      age: 99,
-      address: 'Sidney No. 1 Lake Park',
-    }, {
-        key: '14',
-        name: 'Disabled User',
-        age: 99,
-        address: 'Sidney No. 1 Lake Park',
-    }, {
-        key: '15',
-        name: 'Disabled User',
-        age: 99,
-        address: 'Sidney No. 1 Lake Park',
-    }, {
-        key: '16',
-        name: 'Disabled User',
-        age: 99,
-        address: 'Sidney No. 1 Lake Park',
-    }, {
-        key: '17',
-        name: 'Disabled User',
-        age: 99,
-        address: 'Sidney No. 1 Lake Park',
     }]
     const rowSelection = {
       onChange: (selectedRowKeys, selectedRows) => {
@@ -84,32 +81,7 @@ class Analysis extends React.Component {
       <div className={styles.analysisBox}>
         {/* analysis data show*/}
         <div className={styles.cardList}>
-        <Row type="flex" justify="space-between">
-          <Col className={styles.orange} span={4}>
-            <div className={styles.listCard}>
-              <div> 参加人数 </div>
-              <div> 666 </div>
-            </div>
-          </Col>
-          <Col className={styles.purple} span={4}>
-            <div className={styles.listCard}>
-              <div> 报名人数 </div>
-              <div> 569 </div>
-            </div>
-          </Col>
-          <Col className={styles.blue} span={4}>
-            <div className={styles.listCard}>
-              <div> 预约人数 </div>
-              <div> 563 </div>
-            </div>
-          </Col>
-          <Col className={styles.blue} span={4}>
-            <div className={styles.listCard}>
-              <div> 浏览人数 </div>
-              <div> 789 </div>
-            </div>
-          </Col>
-        </Row>
+          { this.listCard() }
         </div>
         {/* table data show*/}
         <p className={styles.tips}> <Icon type="tags" />  人员列表 </p>

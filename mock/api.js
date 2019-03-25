@@ -1,14 +1,11 @@
-import Mock from 'mockjs'
 
-export default {
-  // 支持值为 Object 和 Array
-  'GET /api/users': (req, res) => {
-    res.send(Mock.mock({
-    // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
-    'list|4': [{
-      // 属性 id 是一个自增数，起始值为 1，每次增 1
-      'number|100-1000': 1
-    }]
-    }))  
-  }
+import request from 'request'
+
+// Setting Port Number or Url
+const baseUrl = 'http://192.168.10.233:8080'
+
+export async function queryBrowseData() {
+  return request(baseUrl + '/api/analysis/browse', (req, res) => {
+    return res
+  })
 }

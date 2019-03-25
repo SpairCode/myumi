@@ -1,6 +1,6 @@
 ### myumi
 
-### Umi.js + Dva.js
+### Umi.js + Dva.js + Request
 
 ### Action ==========> State =====(connect)====> View =====(dispatch)======> Action
 
