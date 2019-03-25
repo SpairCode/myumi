@@ -7,11 +7,18 @@ class Login extends React.Component {
 
   state = {}
 
+  componentDidMount () {
+    localStorage.clear()
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.dir(values)
+        // 预先存储至localStroage,之后存储至Redux
+        localStorage.setItem('name', values.userName)
+        localStorage.setItem('password', values.password)
         router.push('/')
       } else {
         message.error('用户名或密码输入错误!')

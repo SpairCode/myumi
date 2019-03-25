@@ -24,6 +24,7 @@ function BasicLayout(props) {
       </Menu>
     )
     const { Header, Content, Footer, Sider } = Layout
+    const Name = localStorage.getItem('name')
     return (
       <div className={styles.normal}>
         <div className={styles.content}>
@@ -66,7 +67,7 @@ function BasicLayout(props) {
                     <Dropdown overlay={menulist}>
                       <span>
                         <Avatar src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2637329911,3521077389&fm=58&bpow=649&bpoh=808" />
-                        <span style={{ margin: '0px 5px' }}> Fancy </span>
+                        <span style={{ margin: '0px 5px' }}> { Name } </span>
                         <Icon type="caret-down"/>
                       </span>
                     </Dropdown>

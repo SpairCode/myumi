@@ -1,5 +1,7 @@
 import Mock from 'mockjs'
 
+const Random = Mock.Random
+
 const browseData = (req, res) => {
   res.send(Mock.mock({
     // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
@@ -11,6 +13,18 @@ const browseData = (req, res) => {
   }))
 }
 
+const tableData = (req, res) => {
+  res.send(Mock.mock({
+    'list|100': [{
+       'key|+1': 1,
+       'name':  '@cname',
+       'age': '@natural(10, 40)',
+       'address': '@county(true)'
+    }]
+  }))
+}
+
 export default {
-  'GET /api/analysis/browse' : browseData
+  'GET /api/analysis/browse' : browseData,
+  'GET /api/analysis/table' : tableData
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './analysis.css'
-import { Row, Col, Icon, Table } from 'antd'
+import { Row, Col, Icon, Table, Button, Divider } from 'antd'
 // import { queryBrowseData } from '../../../mock/api'
 import axios from 'axios'
 
@@ -10,12 +10,14 @@ class Analysis extends React.Component {
     super(props)
     this.state = {
       list: [],
-      listArray: []
+      listArray: [],
+      tableArray: []
     }
   }
 
   componentDidMount () {
     this.queryListData()
+    this.queryTableData()
   }
 
   queryListData = () => {
@@ -30,13 +32,30 @@ class Analysis extends React.Component {
       }
     })
   }
+
+  queryTableData = () => {
+    axios('/api/analysis/table', {
+      method: 'GET'
+    }).then((res) => {
+      if (res.status === 200) {
+        this.setState({
+          tableArray: res.data.list
+        })
+      } 
+    })
+  }
+
+  editMsg = (val) => {
+    console.log(val)
+  }
+
   // Crad Data Render
   listCard = () => {
     const list = this.state.list
     const nameList = this.state.listArray
     console.log(nameList)
     const listItem = list.map((list, key) =>
-      <Col className={[key === 0||3 ? `${styles.orange}` : '', key === 1 ? `${styles.purple}` : '', key === 2 ? `${styles.blue}` : '']} span={4} title={`${nameList[key]} : ${list.number}`}>
+      <Col key={ key } className={[key === 0||3 ? `${styles.orange}` : `none`, key === 1 ? `${styles.purple}` : `none`, key === 2 ? `${styles.blue}` : `none`]} span={4} title={`${nameList[key]} : ${list.number}`}>
         <div className={styles.listCard}>
           <div> { nameList[key] } </div>
           <div> { list.number } </div>
@@ -54,20 +73,27 @@ class Analysis extends React.Component {
     const columns = [{
       title: 'Name',
       dataIndex: 'name',
-      render: text => <a href='www.jd.com'>{text}</a>,
+      render: text => <span> { text } </span>
     }, {
       title: 'Age',
       dataIndex: 'age',
+      render: text => <span className='danger'> { text } </span>
     }, {
       title: 'Address',
       dataIndex: 'address',
+      render: text => <span> { text } </span>
+    }, {
+      title: 'Operation',
+      key: 'operation',
+      render: (text, record) => (
+        <div>
+          <Button type="primary" onClick={ () => this.editMsg(record) } > Edit </Button>
+          <Divider type="vertical" />
+          <Button type="danger"> Delete </Button>
+        </div>
+      )
     }]
-    const data = [{
-      key: '7',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-    }]
+    const data = this.state.tableArray
     const rowSelection = {
       onChange: (selectedRowKeys, selectedRows) => {
         console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
