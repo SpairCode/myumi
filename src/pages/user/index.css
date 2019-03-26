@@ -1,0 +1,51 @@
+.userBox {
+  width: 100%;
+  background-color: #fff;
+  padding: 10px 0px;
+}
+
+.userBox > * {
+    padding-left: 20px;
+}
+
+.userBoxs {
+  border-radius: 5px;
+  padding: 10px 0px;
+  width: 100%;
+  background-color: aliceblue;
+}
+
+.userHeader {
+  width: 100%;
+  height: 110px;
+}
+
+.userHeader > img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 80px;
+  overflow: hidden;
+}
+
+.userName {
+  margin: 5px 0px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.userProverbs {
+  font-size: 14px;
+}
+
+.list {
+  line-height: 25px;
+}
+
+.userList {
+  border-radius: 5px;  
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+}

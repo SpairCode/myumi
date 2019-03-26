@@ -55,6 +55,10 @@ function BasicLayout(props) {
                     <Icon type="setting" />
                     <span className="nav-text"> 系统设置 </span>
                   </Menu.Item>
+                  <Menu.Item key="5">
+                    <Icon type="user" />
+                    <span className="nav-text"> <Link to='/user/user'> 个人中心 </Link> </span>
+                  </Menu.Item>
                 </Menu>
               </Sider>
               <Layout style={{ backgroundColor: '#ebeef6' }}>
