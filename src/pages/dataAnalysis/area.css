@@ -1,0 +1,17 @@
+.areaBox {
+  margin-top: 20px;  
+  width: 100%;
+  border-radius: 5px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.areaBox > h1 {
+  margin: .5em 0px;
+  font-size: 18px;
+}
+
+.refreshBox {
+  padding-right: 20px;   
+  text-align: right;
+}

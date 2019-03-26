@@ -45,7 +45,7 @@ function BasicLayout(props) {
                   </Menu.Item>
                   <Menu.Item key="2">
                     <Icon type="appstore" />
-                    <span className="nav-text"> 会议管理 </span>
+                    <span className="nav-text"> <Link to='/dataAnalysis/dataAnalysis'> 数据分析 </Link> </span>
                   </Menu.Item>
                   <Menu.Item key="3">
                     <Icon type="cluster" />
@@ -74,7 +74,7 @@ function BasicLayout(props) {
                   </div>
                 </Header>
                 {/* Gobal Content */}
-                <Content style={{ margin: '50px 50px 0', height: '100%' }}>
+                <Content style={{ margin: '50px 50px 0', height: '100%', overflow: 'auto' }}>
                   <div style={{ height: '100%' }}>
                     { props.children }
                   </div>

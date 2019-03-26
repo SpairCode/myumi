@@ -8,6 +8,7 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
+    "@antv/data-set": "^0.10.2",
     "antd": "^3.15.1",
     "axios": "^0.18.0",
     "dva-logger": "^1.0.0",
@@ -16,7 +17,8 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-transition-group": "^2.6.1",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "viser-react": "^2.4.5"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",

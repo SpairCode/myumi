@@ -24,7 +24,40 @@ const tableData = (req, res) => {
   }))
 }
 
+const dataAnalysis = (req, res) => {
+  res.send(Mock.mock({
+    'list|12': [{
+      'date|+1': '@date(MM-dd)',
+      'WUHAN': '@natural(100, 400)',
+      'YICHANG': '@natural(100, 400)',
+      'NANJING': '@natural(100, 400)',
+    }]
+  }))
+}
+
+const yearAnalysis = (req, res) => {
+  res.send(Mock.mock({
+    'list|10': [{
+      'year|+1': 2010,
+      'value': '@natural(100, 400)'
+    }]
+  }))
+}
+
+const areaData = (req, res) => {
+  res.send(Mock.mock({
+    'list|30': [{
+      'year|+1': 1990,
+      'Nokia': '@natural(10, 400)',
+      'Apple': '@natural(10, 500)'
+    }]
+  }))
+}
+
 export default {
   'GET /api/analysis/browse' : browseData,
-  'GET /api/analysis/table' : tableData
+  'GET /api/analysis/table' : tableData,
+  'GET /api/dataAnalysis/dataAnalysis': dataAnalysis,
+  'GET /api/dataAnalysis/yearAnalysis': yearAnalysis,
+  'GET /api/dataAnalysis/areaData': areaData
 }
