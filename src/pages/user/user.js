@@ -1,9 +1,15 @@
 import React from 'react'
 import styles from './index.css'
-import { Icon, Row, Col } from 'antd'
+import { Icon, Row, Col, Tabs } from 'antd'
 
 class Users extends React.Component {
+
+  callback = (key) => {
+    console.log(key)
+  }
+
   render () {
+    const TabPane = Tabs.TabPane
     return (
       <div className={styles.userBox}>
         <Row type="flex" justify="space-around">
@@ -34,7 +40,11 @@ class Users extends React.Component {
           </Col>
           <Col span={17}>
             <div className={styles.userList}>
-              <p> UserList </p>
+              <Tabs defaultActiveKey="1" type="card" onChange={this.callback() }>
+                <TabPane tab="Vue" key="1"> Vue </TabPane>
+                <TabPane tab="React" key="2"> React </TabPane>
+                <TabPane tab="Angular" key="3"> Angular </TabPane>
+              </Tabs>
             </div>
           </Col>
         </Row>
