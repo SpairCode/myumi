@@ -78,8 +78,8 @@ function BasicLayout(props) {
                   </div>
                 </Header>
                 {/* Gobal Content */}
-                <Content style={{ margin: '50px 50px 0', height: '100%', overflow: 'auto' }}>
-                  <div style={{ height: '100%' }}>
+                <Content style={{ margin: '50px 50px 0', minHeight : 'auto' }}>
+                  <div style={{ height: 'auto' }}>
                     { props.children }
                   </div>
                 </Content>
