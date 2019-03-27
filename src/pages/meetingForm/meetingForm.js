@@ -15,17 +15,18 @@ class MeetingForm extends React.Component {
     })
   }
  
-  validatePhoneNUmber = (rule, value, callback) => {
+  validatePhoneNumber = (rule, value, callback) => {
     const form = this.props.form
     let phoneReg = /^1\d{10}$/
-    if (phoneReg.test(value)) {
-      form.validateFields(['confirm'], { force: true })
+    if (phoneReg.test(parseInt(value))) {
+      form.validateFields(['phoneNumber'], { force: true })
       console.log('Success')
+      callback('Success')
     } else {
-      form.validateFields(['confirm'], { force: false })
+      form.validateFields(['phoneNumber'], { force: false })
       console.log('Error')
+      callback('Error')
     }
-    callback()
   }
 
   render () {
@@ -61,7 +62,7 @@ class MeetingForm extends React.Component {
             </Form.Item>
             <Form.Item label="Phone Number">
               {getFieldDecorator('phoneNumber', {
-                rules: [{ required: true, message: 'Please Input Your Phone Number!' }, { validator: this.validatePhoneNUmber }],
+                rules: [{ required: true, message: 'Please Input Your Phone Number!' }, { validator: this.validatePhoneNumber }],
               })(
                 <Input placeholder="Please Input Your Phone Number" />
               )}
