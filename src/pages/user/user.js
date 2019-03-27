@@ -41,9 +41,15 @@ class Users extends React.Component {
           <Col span={17}>
             <div className={styles.userList}>
               <Tabs defaultActiveKey="1" type="card" onChange={this.callback() }>
-                <TabPane tab="Vue" key="1"> Vue </TabPane>
-                <TabPane tab="React" key="2"> React </TabPane>
-                <TabPane tab="Angular" key="3"> Angular </TabPane>
+                <TabPane tab="Vue" key="1">
+                  <p className={styles.tips}> Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web </p>
+                </TabPane>
+                <TabPane tab="React" key="2"> 
+                  <p className={styles.tips}> A JavaScript library for building user interfaces  </p>
+                </TabPane>
+                <TabPane tab="Angular" key="3"> 
+                  <p className={styles.tips}> HTML is great for declaring static documents, but it falters when we try to use it for declaring dynamic views in web-applications. AngularJS lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop.  </p>
+                </TabPane>
               </Tabs>
             </div>
           </Col>
