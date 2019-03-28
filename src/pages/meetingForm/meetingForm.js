@@ -1,75 +1,144 @@
 import React from 'react'
 import styles from './meetingForm.css'
-import { Form, Input, Button, message, DatePicker } from 'antd'
+import { Form, Input, Button, message, DatePicker, Upload, Icon, Modal } from 'antd'
 
 class MeetingForm extends React.Component {
+
+  state = {
+    startValue: null,
+    endValue: null,
+    endOpen: false,
+    previewVisible: false,
+    previewImage: '',
+    fileList: [{
+      uid: '-1',
+      name: 'logo.png',
+      status: 'done',
+      url: '',
+    }],
+  }
+
   // 提交检验
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values)
+        message.success('Information submitted successfully')
+        this.props.form.resetFields()
       } else {
-        message.warning('Please Complete Your Information')
+        message.warning('Please complete your information')
       }
     })
   }
  
   validatePhoneNumber = (rule, value, callback) => {
-    const form = this.props.form
-    let phoneReg = /^1\d{10}$/
+    let phoneReg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/
     if (phoneReg.test(parseInt(value))) {
-      form.validateFields(['phoneNumber'], { force: true })
-      console.log('Success')
-      callback('Success')
+      // callback return parameter error, callback no return parameter
+      callback()
     } else {
-      form.validateFields(['phoneNumber'], { force: false })
-      console.log('Error')
-      callback('Error')
+      if (value !== undefined) {
+        callback('Please input the correct mobile phone number')
+      } else {
+        callback()
+      }
     }
   }
+
+  handleEndOpenChange = (open) => {
+    this.setState({ endOpen: open })
+  }
+
+  disabledEndDate = (endValue) => {
+    const startValue = this.state.startValue
+    if (!endValue || !startValue) {
+      return false
+    }
+    return endValue.valueOf() <= startValue.valueOf()
+  }
+
+  handleCancel = () => this.setState({ previewVisible: false })
+
+  handlePreview = (file) => {
+    this.setState({
+      previewImage: file.url || file.thumbUrl,
+      previewVisible: true,
+    });
+  }
+
+  handleChange = ({ fileList }) => this.setState({ fileList })
 
   render () {
     const { getFieldDecorator } = this.props.form
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 10 },
+        sm: { span: 8 },
       },
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 14 },
+        sm: { span: 16 },
       },
     }
     const config = {rules: [{ type: 'object', required: true, message: 'Please select time!' }]} // 验证规则
+    const { previewVisible, previewImage, fileList } = this.state;
+    const uploadButton = (
+      <div>
+        <Icon type="plus" />
+        <div className="ant-upload-text">Upload</div>
+      </div>
+    )
     return (
       <div className={styles.meetingBox}>
         <div className={styles.meetingBoxs}>
           <Form {...formItemLayout} onSubmit={this.handleSubmit}>
             <Form.Item label="First Name">
               {getFieldDecorator('firstName', {
-                rules: [{ required: true, message: 'Please Input Your First Name!' }],
+                rules: [{ required: true, message: 'Please input your first name!' }],
               })(
-                <Input placeholder="Please Input Your First Name" />
+                <Input placeholder="Please input your first name" />
               )}
             </Form.Item>
             <Form.Item label="Last Name">
               {getFieldDecorator('lastName', {
-                rules: [{ required: true, message: 'Please Input Your Last Name!' }],
+                rules: [{ required: true, message: 'Please input your last name!' }],
               })(
-                <Input placeholder="Please Input Your Last Name" />
+                <Input placeholder="Please input your last name" />
               )}
             </Form.Item>
             <Form.Item label="Phone Number">
               {getFieldDecorator('phoneNumber', {
-                rules: [{ required: true, message: 'Please Input Your Phone Number!' }, { validator: this.validatePhoneNumber }],
+                rules: [{ required: true, message: 'Please input your phone number!' }, { validator: this.validatePhoneNumber }],
               })(
-                <Input placeholder="Please Input Your Phone Number" />
+                <Input placeholder="Please input your phone number" />
               )}
             </Form.Item>
-            <Form.Item label="Your Birthday" style={{ textAlign: 'left' }}>
+            <Form.Item label="Conference Date" style={{ textAlign: 'left' }}>
               {getFieldDecorator('date-picker', config)(
-                <DatePicker />
+                <DatePicker 
+                  disabledDate={this.disabledEndDate}
+                />
+              )}
+            </Form.Item>
+            <Form.Item label="Upload Image">
+              {getFieldDecorator('uploadImage', {
+                rules: [{ required: true, message: 'Please select upload image file!' }],
+              })(
+                <div className="clearfix">
+                  <Upload
+                    action="//jsonplaceholder.typicode.com/posts/"
+                    listType="picture-card"
+                    fileList={fileList}
+                    onPreview={this.handlePreview}
+                    onChange={this.handleChange}
+                  >
+                    {fileList.length >= 3 ? null : uploadButton}
+                  </Upload>
+                  <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
+                    <img alt="example" style={{ width: '100%' }} src={previewImage} />
+                  </Modal>
+                </div>
               )}
             </Form.Item>
             <Form.Item>
