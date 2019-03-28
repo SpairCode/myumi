@@ -10,8 +10,8 @@ class meetingMap extends React.Component {
 
   drawLoc = () => {
     let data = []
-    axios({
-      url: 'https://www.easy-mock.com/mock/5ad6c269baad39136d1d28c2/example/maps'
+    axios('https://www.easy-mock.com/mock/5ad6c269baad39136d1d28c2/example/maps', {
+      method: 'GET'
     }).then((res) => {
       for (var index in res.data.data.address) {
         data.push([res.data.data.address[index].long, res.data.data.address[index].lati])
@@ -31,7 +31,7 @@ class meetingMap extends React.Component {
       let map = new AMap.Map('container', {
         resizeEnable: true, //是否监控地图容器尺寸变化
         zoom:11, //初始化地图层级
-        position: new AMap.LngLat(data),   // 经纬度对象，也可以是经纬度构成的一维数组[116.39, 39.9]
+        // position: new AMap.LngLat(data),   // 经纬度对象，也可以是经纬度构成的一维数组[116.39, 39.9]
         center: [116.397428, 39.90923] //初始化地图中心点
       })  
       var marker = new AMap.Marker({
@@ -50,7 +50,7 @@ class meetingMap extends React.Component {
   render () {
     return (
       <div className={styles.mapBox}>
-        <div id="container"></div>
+        <div style={{ width: '100%', minHeight: '70vh' }} id="container"></div>
       </div>
     )
   }
