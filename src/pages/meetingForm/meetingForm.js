@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './meetingForm.css'
 import { Form, Input, Button, message, DatePicker, Upload, Icon, Modal } from 'antd'
+import moment from 'moment'
 
 class MeetingForm extends React.Component {
 
@@ -46,16 +47,38 @@ class MeetingForm extends React.Component {
     }
   }
 
-  handleEndOpenChange = (open) => {
-    this.setState({ endOpen: open })
+  disabledDate = (current) => {
+    // Can not select days before today and today
+    return current && current < moment().endOf('day');
   }
 
-  disabledEndDate = (endValue) => {
-    const startValue = this.state.startValue
-    if (!endValue || !startValue) {
-      return false
+  range = (start, end) => {
+    const result = []
+    for (let i = start; i < end; i++) {
+      result.push(i)
     }
-    return endValue.valueOf() <= startValue.valueOf()
+    return result
+  }
+  
+  disabledDateTime = () => {
+    return {
+      disabledHours: () => this.range(0, 24).splice(4, 20),
+      disabledMinutes: () => this.range(30, 60),
+      disabledSeconds: () => [55, 56],
+    }
+  }
+
+  disabledDate = (current) => {
+    // Can not select days before today and today
+    return current && current < moment().endOf('day')
+  }
+  
+  disabledDateTime = () => {
+    return {
+      disabledHours: () => this.range(0, 24).splice(4, 20),
+      disabledMinutes: () => this.range(30, 60),
+      disabledSeconds: () => [55, 56],
+    };
   }
 
   handleCancel = () => this.setState({ previewVisible: false })
@@ -89,6 +112,7 @@ class MeetingForm extends React.Component {
         <div className="ant-upload-text">Upload</div>
       </div>
     )
+    const { RangePicker } = DatePicker
     return (
       <div className={styles.meetingBox}>
         <div className={styles.meetingBoxs}>
@@ -116,8 +140,14 @@ class MeetingForm extends React.Component {
             </Form.Item>
             <Form.Item label="Conference Date" style={{ textAlign: 'left' }}>
               {getFieldDecorator('date-picker', config)(
-                <DatePicker 
-                  disabledDate={this.disabledEndDate}
+                <RangePicker
+                  disabledDate={this.disabledDate}
+                  disabledTime={this.disabledRangeTime}
+                  showTime={{
+                    hideDisabledOptions: true,
+                    defaultValue: [moment('00:00:00', 'HH:mm:ss'), moment('11:59:59', 'HH:mm:ss')],
+                  }}
+                  format="YYYY-MM-DD HH:mm:ss"
                 />
               )}
             </Form.Item>
