@@ -37,7 +37,7 @@ function BasicLayout(props) {
                 onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
                 theme="light"
               >
-                <div className="logo" />
+                <div className={styles.logo}> System </div>
                 <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
                   <Menu.Item key="1">
                     <Icon type="bars" />

@@ -42,3 +42,17 @@
 .header > span {
   margin: 0px 20px; 
 }
+
+/* 彩色渐变文字 */
+.logo {
+  box-sizing: border-box;
+  border-bottom: 1px solid #e8e8e8;
+  border-right: 1px solid #e8e8e8;
+  height: 64px;
+  line-height: 64px;
+  font-size: 24px;
+  background-image: linear-gradient(135deg, #2587ff, #69ceff);
+  background-color: #fafafa;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
