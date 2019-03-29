@@ -1,13 +1,14 @@
 import React from 'react'
 import styles from './line.css'
 import { Chart, Tooltip, Axis, Legend, Line, Point } from 'viser-react'
-import { Button } from 'antd'
+import { Button, Spin } from 'antd'
 import axios from 'axios'
 
 class Lines extends React.Component {
   
   state = {
-    sourceData: []
+    sourceData: [],
+    loading: true
   }
   
   componentDidMount () {
@@ -15,12 +16,16 @@ class Lines extends React.Component {
   }
   
   queryAnalysisData = () => {
+    this.setState({
+      loading: true
+    })
     axios('/api/dataAnalysis/dataAnalysis', {
       method: 'GET'
     }).then((res) => {
       if (res.status === 200) {
         this.setState({
-          sourceData: res.data.list
+          sourceData: res.data.list,
+          loading: false
         })
       }
     })
@@ -45,15 +50,17 @@ class Lines extends React.Component {
     }]  
     return (
       <div className={styles.lineBox}>
-        <h1> 月度销量分析 </h1>
-        <Chart forceFit height={400} data={data} scale={scale} renderer='svg'>
-          <Tooltip />
-          <Axis />
-          <Legend />
-          <Line position="date*temperature" color="city" />
-          <Point position="date*temperature" color="city" size={4} style={{ stroke: '#fff', lineWidth: 1 }} shape="circle"/>
-        </Chart>
-        <p className={styles.refreshBox}> <Button type="primary" onClick={ () => { this.queryAnalysisData() } }> Refresh Data </Button> </p>
+        <Spin spinning={this.state.loading}>
+          <h1> 月度销量分析 </h1>
+          <Chart forceFit height={400} data={data} scale={scale} renderer='svg'>
+            <Tooltip />
+            <Axis />
+            <Legend />
+            <Line position="date*temperature" color="city" />
+            <Point position="date*temperature" color="city" size={4} style={{ stroke: '#fff', lineWidth: 1 }} shape="circle"/>
+          </Chart>
+          <p className={styles.refreshBox}> <Button type="primary" onClick={ () => { this.queryAnalysisData() } }> Refresh Data </Button> </p>
+        </Spin>
       </div>
     )
   }

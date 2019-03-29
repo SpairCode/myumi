@@ -53,7 +53,7 @@ function BasicLayout(props) {
                   </Menu.Item>
                   <Menu.Item key="4">
                     <Icon type="setting" />
-                    <span className="nav-text"> 系统设置 </span>
+                    <span className="nav-text"> <Link to='/systemSetting/systemSetting'> 系统设置 </Link> </span>
                   </Menu.Item>
                   <Menu.Item key="5">
                     <Icon type="user" />

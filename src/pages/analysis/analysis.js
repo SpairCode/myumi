@@ -55,7 +55,6 @@ class Analysis extends React.Component {
   listCard = () => {
     const list = this.state.list
     const nameList = this.state.listArray
-    console.log(nameList)
     const listItem = list.map((list, key) =>
       <Col key={ key } className={[key === 0||3 ? `${styles.orange}` : `none`, key === 1 ? `${styles.purple}` : `none`, key === 2 ? `${styles.blue}` : `none`]} span={4} title={`${nameList[key]} : ${list.number}`}>
         <div className={styles.listCard}>

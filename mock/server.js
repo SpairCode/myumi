@@ -55,12 +55,33 @@ const areaData = (req, res) => {
   }))
 }
 
+const systemSetting = (req, res) => {
+  res.send(
+    {
+      data: [{
+        title: '用户设置',
+        default: 'Fan'
+      }, {
+        title: '密码设置',
+        default: '666666'
+      }, {
+        title: '手机设置',
+        default: '18307130014'
+      }, {
+        title: '邮箱设置',
+        default: 'spairfan@126.com'
+      }]
+    }
+  )
+}
+
 const proxy = {
   'GET /api/analysis/browse' : browseData,
   'GET /api/analysis/table' : tableData,
   'GET /api/dataAnalysis/dataAnalysis': dataAnalysis,
   'GET /api/dataAnalysis/yearAnalysis': yearAnalysis,
-  'GET /api/dataAnalysis/areaData': areaData
+  'GET /api/dataAnalysis/areaData': areaData,
+  'GET /api/systemSetting/systemSetting': systemSetting
 }
 
 export default delay(proxy, 1000)

@@ -1,13 +1,14 @@
 import React from 'react'
 import  styles from './bar.css'
 import { Chart, Tooltip, Axis, Bar } from 'viser-react'
-import { Button } from 'antd'
+import { Button, Spin } from 'antd'
 import axios from 'axios'
 
 class Bars extends React.Component {
 
   state = {
-    barData: []
+    barData: [],
+    loading: true
   }
 
   componentDidMount () {
@@ -15,6 +16,9 @@ class Bars extends React.Component {
   }  
 
   queryBarData = () => {
+    this.setState({
+      loading: true
+    })
     axios('/api/dataAnalysis/yearAnalysis', {
       method: 'GET'
     }).then((res) => {
@@ -23,7 +27,8 @@ class Bars extends React.Component {
           res.data.list[index].year = res.data.list[index].year + '年'
         }
         this.setState({
-          barData: res.data.list
+          barData: res.data.list,
+          loading: false
         })
       }
     })
@@ -39,14 +44,16 @@ class Bars extends React.Component {
     const data = this.state.barData
     return (
       <div className={styles.barBox}>
-        {/* forceFit 自适应宽度 */}
-        <h1> 年度销量分析 </h1>
-        <Chart forceFit height={400} data={data} scale={scale} renderer='svg'>
-          <Tooltip />
-          <Axis />
-          <Bar position="year*value" />
-        </Chart>
-        <p className={styles.refreshBox}> <Button type="primary" onClick={ () => { this.queryBarData() } }> Refresh Data </Button> </p>
+        <Spin spinning={this.state.loading}>
+          {/* forceFit 自适应宽度 */}
+          <h1> 年度销量分析 </h1>
+          <Chart forceFit height={400} data={data} scale={scale} renderer='svg'>
+            <Tooltip />
+            <Axis />
+            <Bar position="year*value" />
+          </Chart>
+          <p className={styles.refreshBox}> <Button type="primary" onClick={ () => { this.queryBarData() } }> Refresh Data </Button> </p>
+        </Spin>
       </div>
     )
   }
