@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './analysis.css'
-import { Row, Col, Icon, Table, Button, Divider } from 'antd'
+import { Row, Col, Icon, Table, Button, Divider, Spin } from 'antd'
 // import { queryBrowseData } from '../../../mock/api'
 import axios from 'axios'
 
@@ -11,7 +11,8 @@ class Analysis extends React.Component {
     this.state = {
       list: [],
       listArray: [],
-      tableArray: []
+      tableArray: [],
+      loading: true
     }
   }
 
@@ -39,7 +40,8 @@ class Analysis extends React.Component {
     }).then((res) => {
       if (res.status === 200) {
         this.setState({
-          tableArray: res.data.list
+          tableArray: res.data.list,
+          loading: false
         })
       } 
     })
@@ -105,15 +107,17 @@ class Analysis extends React.Component {
     }
     return (
       <div className={styles.analysisBox}>
-        {/* analysis data show*/}
-        <div className={styles.cardList}>
-          { this.listCard() }
-        </div>
-        {/* table data show*/}
-        <p className={styles.tips}> <Icon type="tags" />  人员列表 </p>
-        <div className={styles.tableBox}>
-          <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
-        </div>
+        <Spin spinning={this.state.loading}>
+          {/* analysis data show*/}
+          <div className={styles.cardList}>
+            { this.listCard() }
+          </div>
+          {/* table data show*/}
+          <p className={styles.tips}> <Icon type="tags" />  人员列表 </p>
+          <div className={styles.tableBox}>
+            <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
+          </div>
+        </Spin>
       </div>
     )
   }

@@ -19,6 +19,7 @@
     "react-dom": "^16.7.0",
     "react-transition-group": "^2.6.1",
     "request": "^2.88.0",
+    "roadhog-api-doc": "^1.1.2",
     "viser-react": "^2.4.5"
   },
   "devDependencies": {

@@ -1,8 +1,13 @@
 import React from 'react'
 import styles from './meetingMap.css'
 import axios from 'axios'
+import { Spin } from 'antd'
 
 class meetingMap extends React.Component {
+
+  state = {
+    loading: true
+  }
 
   componentDidMount () {
     this.drawLoc()
@@ -53,13 +58,20 @@ class meetingMap extends React.Component {
       map.add(marker)
       //使用CSS默认样式定义地图上的鼠标样式
       map.setDefaultCursor("move")
-    }  
+    }
+    setTimeout(() => {
+      this.setState({
+        loading: false
+      })
+    }, 300)
   }
 
   render () {
     return (
       <div className={styles.mapBox}>
-        <div style={{ width: '100%', minHeight: '70vh' }} id="container"></div>
+        <Spin spinning={this.state.loading}>
+          <div style={{ width: '100%', minHeight: '70vh' }} id="container"></div>
+        </Spin>
       </div>
     )
   }

@@ -1,4 +1,5 @@
 import Mock from 'mockjs'
+import { delay } from 'roadhog-api-doc' // 模拟网络延迟
 
 const Random = Mock.Random
 
@@ -54,10 +55,12 @@ const areaData = (req, res) => {
   }))
 }
 
-export default {
+const proxy = {
   'GET /api/analysis/browse' : browseData,
   'GET /api/analysis/table' : tableData,
   'GET /api/dataAnalysis/dataAnalysis': dataAnalysis,
   'GET /api/dataAnalysis/yearAnalysis': yearAnalysis,
   'GET /api/dataAnalysis/areaData': areaData
 }
+
+export default delay(proxy, 1000)
