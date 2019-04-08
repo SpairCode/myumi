@@ -5,6 +5,7 @@ export default {
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
+      //base: , //部署至非根目录时需要
       antd: true,
       dva: {
         immer: true,

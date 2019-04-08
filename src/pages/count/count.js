@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from 'antd'
-import { connect} from 'dva'
+import { connect } from 'dva'
 
 class Count extends React.Component {
   render (props) {

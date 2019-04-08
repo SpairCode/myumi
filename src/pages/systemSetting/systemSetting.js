@@ -31,8 +31,8 @@ class SystemSetting extends React.Component {
      <List.Item key={key}>
       <Row style={{ width: '100%', padding: '0px 15px' }}>
         <Col span={16}>
-          <div style={{ textAlign: 'left' }}> { lists.title } </div>
-          <div style={{ textAlign: 'left', color: '#1890ff' }} > { lists.default } </div>
+          <div style={{ textAlign: 'left', lineHeight: '25px' }}> { lists.title } </div>
+          <div style={{ textAlign: 'left', color: '#bfbfbf', lineHeight: '25px' }} > { lists.default } </div>
         </Col>
         <Col style={{ textAlign: 'right' }} span={8}>
           <Button type="primary"> 编辑 </Button>
