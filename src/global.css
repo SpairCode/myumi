@@ -18,6 +18,22 @@ body {
   color: #F56C6C;
 }
 
+.error {
+  color: #f5222d;
+}
+
+.warn {
+  color: #52c41a;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
 /* 滚动条样式 */
 ::-webkit-scrollbar-thumb {
   background-color: transparent;

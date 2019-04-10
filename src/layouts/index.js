@@ -49,7 +49,7 @@ function BasicLayout(props) {
                   </Menu.Item>
                   <Menu.Item key="3">
                     <Icon type="cluster" />
-                    <span className="nav-text"> 组织架构 </span>
+                    <span className="nav-text"> <Link to='/weather/weather'> Weather </Link> </span>
                   </Menu.Item>
                   <Menu.Item key="4">
                     <Icon type="setting" />
