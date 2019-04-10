@@ -19,7 +19,7 @@ class Login extends React.Component {
         // 预先存储至localStroage,之后存储至Redux
         localStorage.setItem('name', values.userName)
         localStorage.setItem('password', values.password)
-        router.push('/')
+        router.push('/analysis/analysis')
       } else {
         message.error('用户名或密码输入错误!')
       }

@@ -9,3 +9,5 @@
 ### Connect Bind State  Update View
 
 ### Value Maybe Save As In the Dva Action, But Action Data Drive UI Component Render ?
+
+### umi how can setting Index.page in Router
