@@ -67,6 +67,10 @@ function BasicLayout(props) {
                     <Icon type="environment" />
                     <span className="nav-text"> <Link to='/meetingMap/meetingMap'> 会议地图 </Link> </span>
                   </Menu.Item>
+                  <Menu.Item key="8">
+                    <Icon type="book" />
+                    <span className="nav-text"> <Link to='/note/note'> 工作便签 </Link> </span>
+                  </Menu.Item>
                 </Menu>
               </Sider>
               <Layout style={{ backgroundColor: '#ebeef6' }}>
