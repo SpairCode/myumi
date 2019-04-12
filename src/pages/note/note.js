@@ -3,6 +3,7 @@ import styles from '../note/note.css'
 import { Row, Col, Button, Tabs, Icon, Modal } from 'antd'
 import NoteForm from '../note/noteForm'
 import HaveList from '../note/haveList'
+import CompleteList from '../note/completeList'
 
 class Note extends React.Component {
 
@@ -33,7 +34,7 @@ class Note extends React.Component {
                 <HaveList></HaveList>
               </TabPane>
               <TabPane tab={<span><Icon type="smile" /> 已完成 </span>} key="2">
-                已完成
+                <CompleteList></CompleteList>
               </TabPane>
             </Tabs>
           </Col>

@@ -1,0 +1,26 @@
+.completeBox {
+  width: 100%;
+  background-color: #fff;
+}
+
+.completeList {
+  list-style: none;
+}
+
+.completeList > li {
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 3px;
+  width: 90%;
+  list-style: none;
+  color: #fff;
+  background-color: rgba(82, 196, 26, .5);
+}
+
+.completeCircle {
+  display: inline-block;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.65);
+  padding: 6px;
+  background-color: rgba(0, 0, 0, 0.65);
+}

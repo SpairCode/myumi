@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../note/haveList.css'
 import moment from 'moment'
-import { Button, Modal } from 'antd'
+import { Button, Modal, Row, Col } from 'antd'
 
 const confirm = Modal.confirm
 class HaveList extends React.Component {
@@ -30,7 +30,14 @@ class HaveList extends React.Component {
     }
     const listItem = listArray.map((list, key) =>
       <li key={key} className={styles.list}>
-        <p> <span> {list.title} </span> <span> { moment().format('YYYY-MM-DD',list['range-picker'][0]) } ~ { moment().format('YYYY-MM-DD',list['range-picker'][1]) } </span> <span className={[list.select === '1' ? `${styles.one}`: `${styles.three}`]} ></span> <Button onClick={ () => this.operateList(key) } className={styles.operateButton} type="primary" size="small"> 操作 </Button> </p>
+        <p>
+          <Row>
+            <Col span={4}> <span> {list.title} </span> </Col>
+            <Col span={6}> <span> { moment().format('YYYY-MM-DD',list['range-picker'][0]) } ~ { moment().format('YYYY-MM-DD',list['range-picker'][1]) } </span> </Col>
+            <Col span={6}> <span className={[list.select === '1' ? `${styles.one}`: `${styles.three}`]} ></span> </Col>
+            <Col span={6}> <Button onClick={ () => this.operateList(key) } className={styles.operateButton} type="primary" size="small"> 操作 </Button> </Col>
+          </Row>
+        </p>
       </li>
     )
     return (

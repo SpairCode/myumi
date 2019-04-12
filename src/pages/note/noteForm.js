@@ -21,7 +21,10 @@ class noteForm extends React.Component {
           this.state.newList.push(values)
           localStorage.setItem('noteList', JSON.stringify(this.state.newList))
         }
+        // 调用父组件方法
         this.props.clearForm()
+        // 重置表单
+        this.props.form.resetFields()
       }
     })
   }
