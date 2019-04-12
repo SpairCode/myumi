@@ -35,7 +35,7 @@ class HaveList extends React.Component {
             <Col span={4}> <span> {list.title} </span> </Col>
             <Col span={6}> <span> { moment().format('YYYY-MM-DD',list['range-picker'][0]) } ~ { moment().format('YYYY-MM-DD',list['range-picker'][1]) } </span> </Col>
             <Col span={6}> <span className={[list.select === '1' ? `${styles.one}`: `${styles.three}`]} ></span> </Col>
-            <Col span={6}> <Button onClick={ () => this.operateList(key) } className={styles.operateButton} type="primary" size="small"> 操作 </Button> </Col>
+            <Col span={6}> <Button onClick={ () => this.operateList(key) } className={styles.operateButton} type="primary" size="small"> 操作 </Button> <Button type="default" size="small"> 修改 </Button> </Col>
           </Row>
         </p>
       </li>
