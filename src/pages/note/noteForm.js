@@ -2,13 +2,26 @@ import React from 'react'
 import { Form, Input, DatePicker, Select, Button } from 'antd'
 
 class noteForm extends React.Component {
+  // 子组件调用父组件方法
 
+  state = {
+    newList: [], // 新建表单
+  }
 
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.table(values.rangepicker)
+        // 判断localStorage 是否有值
+        if(localStorage.getItem('noteList')) {
+          let listArray = JSON.parse(localStorage.getItem('noteList'))
+          listArray.push(values)
+          localStorage.setItem('noteList', JSON.stringify(listArray))
+        } else {
+          this.state.newList.push(values)
+          localStorage.setItem('noteList', JSON.stringify(this.state.newList))
+        }
+        this.props.clearForm()
       }
     })
   }
