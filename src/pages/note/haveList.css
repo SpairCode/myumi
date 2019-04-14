@@ -49,6 +49,6 @@
   padding: 6px;
 }
 
-.operateButton {
-  float: right;
+.ButtonBox > button {
+  margin: 0px 5px;
 }

@@ -6,6 +6,7 @@ import { Button, Modal, Row, Col } from 'antd'
 const confirm = Modal.confirm
 class HaveList extends React.Component {
 
+  // 确认是否删除该条数据
   operateList = (key) => {
     confirm({
       title: '便签删除',
@@ -17,6 +18,24 @@ class HaveList extends React.Component {
       },
       onCancel() {},
     })
+  }
+
+  // 该条任务已经完成
+  completeWork = (key) => {
+    console.warn(key)
+    debugger
+    let listData = JSON.parse(localStorage.getItem('noteList'))
+    // 删除该条数据，将改条数数据置入已完成数组
+    // 判断已完成数据里面是否存在数据
+    let completeData = []
+    completeData = JSON.parse(localStorage.getItem('completeList'))
+    if (completeData) {
+      localStorage.setItem('completeList', JSON.stringify(completeData.push(listData[key])))
+    } else {
+      localStorage.setItem('completeList', JSON.stringify(completeData.push(listData[key])))
+    }
+    listData.splice(key, 1)
+    localStorage.setItem('noteList', JSON.stringify(listData))
   }
 
   renderList = () => {
@@ -34,8 +53,12 @@ class HaveList extends React.Component {
           <Row>
             <Col span={4}> <span> {list.title} </span> </Col>
             <Col span={12}> <span> 开始日期： { moment().format('YYYY-MM-DD',list['range-picker'][0]) } ~ 结束日期： { moment().format('YYYY-MM-DD',list['range-picker'][1]) } </span> </Col>
-            <Col span={4}> <span className={[list.select === '1' ? `${styles.one}`: `${styles.three}`]} ></span> </Col>
-            <Col span={4}> <Button onClick={ () => this.operateList(key) } className={styles.operateButton} type="primary" size="small"> 操作 </Button> <Button type="default" size="small"> 逾期 </Button> </Col>
+            <Col span={2}> <span className={[list.select === '1' ? `${styles.one}`: `${styles.three}`]} ></span> </Col>
+            <Col span={6} className={styles.ButtonBox}> 
+              <Button onClick={ () => this.operateList(key) } type="danger" size="small"> 操作 </Button>
+              <Button type="default" size="small"> 逾期 </Button>
+              <Button onClick={ () => { this.completeWork(key) } } type="primary" size="small"> 完成 </Button>
+            </Col>
           </Row>
         </p>
       </li>
