@@ -43,7 +43,7 @@ class HaveList extends React.Component {
   completeWork = (key) => {
     const { dispatch } = this.props
     dispatch({
-      type: 'state/test',
+      type: 'test',
       payload: key
     })
     let listData = JSON.parse(localStorage.getItem('noteList'))
