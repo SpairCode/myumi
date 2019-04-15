@@ -11,7 +11,7 @@ export default {
         immer: true,
       },
       dynamicImport: false,
-      title: 'myumi',
+      title: 'System',
       dll: false,
       
       routes: {

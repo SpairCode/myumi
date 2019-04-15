@@ -5,12 +5,15 @@ import moment from 'moment'
 
 class completeList extends React.Component {
 
+  componentDidMount () {
+    this.renderList()
+  }
+
   renderList = () => {
     let completeList = localStorage.getItem('completeList') 
-    let listArray = [{"title":"ScoreBoard","range-picker":["2019-04-12T06:10:28.961Z","2019-04-13T06:10:28.961Z"],"textarea":"UMI","select":"2"}]
+    let listArray = []
     if (completeList) {
       //localStorage存在数据
-      debugger
       listArray = JSON.parse(localStorage.getItem('completeList'))
     }
     const listItem = listArray.map((list, key) => 

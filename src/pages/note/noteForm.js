@@ -4,6 +4,15 @@ import { Form, Input, DatePicker, Select, Button } from 'antd'
 class noteForm extends React.Component {
   // 子组件调用父组件方法
 
+  componentWillMount () {
+    // decide this is new form or edit old form
+    if (this.props.editArray) {
+     this.state.newList.push(this.props.editArray)
+    }
+    console.table(this.props.editArray)
+    console.table(this.state.newList)
+  }
+
   state = {
     newList: [], // 新建表单
   }

@@ -26,7 +26,7 @@ class Note extends React.Component {
       <div className={styles.noteBox}>
         <Row type="flex" justify="space-between">
           <Col className={styles.newNote} span={6}>
-            <Button className={styles.newButton} onClick={ () => { this.setState({ visible: true }) } } type="primary" size="large" > 新增便签 </Button>
+            <Button onClick={ () => { this.setState({ visible: true }) } } type="primary" size="large" > 新增便签 </Button>
           </Col>
           <Col className={styles.noteList} span={18}>
             <Tabs defaultActiveKey="1">
