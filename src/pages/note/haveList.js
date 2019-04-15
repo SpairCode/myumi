@@ -1,8 +1,9 @@
 import React from 'react'
-import styles from '../note/haveList.css'
 import moment from 'moment'
+import { connect } from 'dva'
 import router from 'umi/router'
 import { Button, Modal, Row, Col } from 'antd'
+import styles from '../note/haveList.css'
 import NoteForm from '../note/noteForm'
 
 const confirm = Modal.confirm
@@ -40,6 +41,11 @@ class HaveList extends React.Component {
 
   // 该条任务已经完成
   completeWork = (key) => {
+    const { dispatch } = this.props
+    dispatch({
+      type: 'state/test',
+      payload: key
+    })
     let listData = JSON.parse(localStorage.getItem('noteList'))
     // 删除该条数据，将改条数数据置入已完成数组
     // 判断已完成数据里面是否存在数据
@@ -100,4 +106,4 @@ class HaveList extends React.Component {
   }
 }
 
-export default HaveList
+export default connect(({ state }) => ({ state }))(HaveList)

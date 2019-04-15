@@ -1,6 +1,7 @@
 import React from 'react'
-import styles from '../note/note.css'
 import { Row, Col, Button, Tabs, Icon, Modal } from 'antd'
+import { connect } from 'dva'
+import styles from '../note/note.css'
 import NoteForm from '../note/noteForm'
 import HaveList from '../note/haveList'
 import CompleteList from '../note/completeList'
@@ -48,4 +49,4 @@ class Note extends React.Component {
   }
 }
 
-export default Note
+export default connect(({ state }) => ({ state }))(Note)
