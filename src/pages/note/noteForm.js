@@ -9,8 +9,6 @@ class noteForm extends React.Component {
     if (this.props.editArray) {
      this.state.newList.push(this.props.editArray)
     }
-    console.table(this.props.editArray)
-    console.table(this.state.newList)
   }
 
   state = {
@@ -18,6 +16,7 @@ class noteForm extends React.Component {
   }
 
   handleSubmit = (e) => {
+    debugger
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {

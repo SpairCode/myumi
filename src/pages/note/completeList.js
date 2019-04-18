@@ -5,16 +5,14 @@ import moment from 'moment'
 
 class completeList extends React.Component {
 
-  componentDidMount () {
-    this.renderList()
-  }
-
   renderList = () => {
     let completeList = localStorage.getItem('completeList') 
     let listArray = []
     if (completeList) {
       //localStorage存在数据
       listArray = JSON.parse(localStorage.getItem('completeList'))
+    } else {
+      listArray = []
     }
     const listItem = listArray.map((list, key) => 
       <li key={key} title={`开始日期： ${moment().format('YYYY-MM-DD',list['range-picker'][0])} ~ 结束日期：${moment().format('YYYY-MM-DD',list['range-picker'][1])} `}>

@@ -1,8 +1,8 @@
 import Mock from 'mockjs'
 import { delay } from 'roadhog-api-doc' // 模拟网络延迟
+import request from 'request'
 
-const Random = Mock.Random
-
+// list port data
 const browseData = (req, res) => {
   res.send(Mock.mock({
     // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
@@ -14,6 +14,7 @@ const browseData = (req, res) => {
   }))
 }
 
+// tableList port data
 const tableData = (req, res) => {
   res.send(Mock.mock({
     'list|100': [{
@@ -25,6 +26,7 @@ const tableData = (req, res) => {
   }))
 }
 
+// charts port data
 const dataAnalysis = (req, res) => {
   res.send(Mock.mock({
     'list|12': [{
@@ -36,6 +38,8 @@ const dataAnalysis = (req, res) => {
   }))
 }
 
+
+// charts port data
 const yearAnalysis = (req, res) => {
   res.send(Mock.mock({
     'list|10': [{
@@ -45,6 +49,8 @@ const yearAnalysis = (req, res) => {
   }))
 }
 
+
+// area charts port data
 const areaData = (req, res) => {
   res.send(Mock.mock({
     'list|30': [{
@@ -55,6 +61,7 @@ const areaData = (req, res) => {
   }))
 }
 
+// System setting port data
 const systemSetting = (req, res) => {
   res.send(
     {
@@ -75,13 +82,30 @@ const systemSetting = (req, res) => {
   )
 }
 
+// note list port data
+const noteForm = (req, res) => {
+  res.send(Mock.mock({
+    'list|16': [{
+      'title': '@last',
+      'range-picker': ['@now', '@now(second)'],
+      'select|1-3': 1,
+      'textarea': '@cparagraph'
+    }]
+  }))
+}
+
 const proxy = {
   'GET /api/analysis/browse' : browseData,
   'GET /api/analysis/table' : tableData,
   'GET /api/dataAnalysis/dataAnalysis': dataAnalysis,
   'GET /api/dataAnalysis/yearAnalysis': yearAnalysis,
   'GET /api/dataAnalysis/areaData': areaData,
-  'GET /api/systemSetting/systemSetting': systemSetting
+  'GET /api/systemSetting/systemSetting': systemSetting,
+  'GET /api/noteForm/noteForm':noteForm
 }
 
 export default delay(proxy, 1000)
+
+export async function queryNoteList() {
+  return request('http://192.168.10.233:8080/api/noteForm/noteForm')
+}

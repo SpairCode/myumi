@@ -1,6 +1,5 @@
 import React from 'react'
 import { Row, Col, Button, Tabs, Icon, Modal } from 'antd'
-import { connect } from 'dva'
 import styles from '../note/note.css'
 import NoteForm from '../note/noteForm'
 import HaveList from '../note/haveList'
@@ -15,10 +14,10 @@ class Note extends React.Component {
   }
 
   clearForm = () => {
-    console.warn('success')
     this.setState({
       visible: false
     })
+    console.log('success')
   }
 
   render () {
@@ -32,7 +31,7 @@ class Note extends React.Component {
           <Col className={styles.noteList} span={18}>
             <Tabs defaultActiveKey="1">
               <TabPane tab={<span><Icon type="meh" /> 进行中 </span>} key="1">
-                <HaveList></HaveList>
+                <HaveList ref="haveList"></HaveList>
               </TabPane>
               <TabPane tab={<span><Icon type="smile" /> 已完成 </span>} key="2">
                 <CompleteList></CompleteList>
@@ -49,4 +48,4 @@ class Note extends React.Component {
   }
 }
 
-export default connect(({ state }) => ({ state }))(Note)
+export default Note

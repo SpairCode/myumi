@@ -14,6 +14,16 @@ class HaveList extends React.Component {
     editArray: [] // 逾期修改数组
   }
 
+  componentWillMount () {
+    const { dispatch } = this.props
+    dispatch({
+      type: 'note/fetch',
+      payload: {
+        noteList: []
+      },
+    })
+  }
+
   // 确认是否删除该条数据
   operateList = (key) => {
     confirm({
@@ -42,11 +52,11 @@ class HaveList extends React.Component {
   // 该条任务已经完成
   completeWork = (key) => {
     const { dispatch } = this.props
-    dispatch({
-      type: 'test',
-      payload: key
-    })
     let listData = JSON.parse(localStorage.getItem('noteList'))
+    dispatch({
+      type: 'note/completeWork',
+      payload: {listData, key}
+    })
     // 删除该条数据，将改条数数据置入已完成数组
     // 判断已完成数据里面是否存在数据
     let completeData = []
@@ -106,4 +116,4 @@ class HaveList extends React.Component {
   }
 }
 
-export default connect(({ state }) => ({ state }))(HaveList)
+export default connect(({ noteList }) => ({ noteList }))(HaveList)
