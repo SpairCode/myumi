@@ -1,0 +1,308 @@
+[33mcommit e38b9eb8d9c335667930a7be350a919564a52159[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: f7971af b6b8bc3
+Author: SpairCode <spairfan@126.com>
+Date:   Thu Apr 18 17:48:18 2019 +0800
+
+    Merge branch 'master' of https://github.com/SpairCode/myumi
+
+[33mcommit f7971afb736573327df71264f00f67e46b4392e2[m
+Author: SpairCode <spairfan@126.com>
+Date:   Thu Apr 18 17:46:00 2019 +0800
+
+    add request and hele
+
+[33mcommit b6b8bc370a8b293d7e49d2c0d1277cbef7bc62e3[m
+Author: zhangfan <1598111569@qq.com>
+Date:   Tue Apr 16 21:21:42 2019 +0800
+
+    add components
+
+[33mcommit d97861198cb9cf756e09e7290219591714870662[m
+Author: zhangfan <1598111569@qq.com>
+Date:   Mon Apr 15 23:00:46 2019 +0800
+
+    edit haveList
+
+[33mcommit 186aa98bbfe03afedb381a2fbbd974a53509ed92[m
+Author: SpairCode <spairfan@126.com>
+Date:   Mon Apr 15 17:52:02 2019 +0800
+
+    amend reducer file
+
+[33mcommit d4d91fc1fb98996aa5de5279676d43aabbf95118[m
+Author: SpairCode <spairfan@126.com>
+Date:   Mon Apr 15 15:38:47 2019 +0800
+
+    little amend
+
+[33mcommit 584c329320460c6b8b718f86881270b00b5ae7eb[m
+Author: zhangfan <1598111569@qq.com>
+Date:   Sun Apr 14 21:22:38 2019 +0800
+
+    edit components
+
+[33mcommit e6660d57bcf265e82cec6e7aee6f9747858cd3bc[m
+Author: zhangfan <1598111569@qq.com>
+Date:   Sat Apr 13 22:13:34 2019 +0800
+
+    add title property
+
+[33mcommit 8c75d5f8329600a8a4b8a7257fd3dcce4a824b37[m
+Author: zhangfan <1598111569@qq.com>
+Date:   Fri Apr 12 21:24:10 2019 +0800
+
+    edit havaList
+
+[33mcommit b8ebd7df6bafab2e511ae8ed378b182262795583[m
+Author: SpairCode <spairfan@126.com>
+Date:   Fri Apr 12 17:21:48 2019 +0800
+
+    edit complete components
+
+[33mcommit e009d0a60853df6761a01251ba90d3de93c7f10e[m
+Author: SpairCode <spairfan@126.com>
+Date:   Fri Apr 12 15:41:43 2019 +0800
+
+    add components
+
+[33mcommit bf2380ecd61284b59471e9dd3b5aa8117ceb3a45[m
+Author: SpairCode <spairfan@126.com>
+Date:   Fri Apr 12 15:02:22 2019 +0800
+
+    edit list and noteorm components
+
+[33mcommit 857c6cb87795e3ec12aa067559b364e55ab273b2[m
+Author: SpairCode <spairfan@126.com>
+Date:   Thu Apr 11 16:55:57 2019 +0800
+
+    edit noteForm,note components and css style
+
+[33mcommit fead729cee00337b6464aaf0b417592c647cd2bc[m
+Author: SpairCode <spairfan@126.com>
+Date:   Thu Apr 11 15:02:17 2019 +0800
+
+    add note components
+
+[33mcommit 94ea3591aabc5afbc646205cc32e8326c7bcd3cb[m
+Author: SpairFan <spairfan@126.com>
+Date:   Wed Apr 10 17:57:50 2019 +0800
+
+    edit css property
+
+[33mcommit 44f1d9f1185066f1a1fe8ac1bf07cd7142b8bd07[m
+Author: SpairFan <spairfan@126.com>
+Date:   Wed Apr 10 17:49:12 2019 +0800
+
+    add weather components and amap api
+
+[33mcommit eaeec964b01067ba031aed67ee51f879a54e69ab[m
+Author: SpairFan <spairfan@126.com>
+Date:   Wed Apr 10 10:11:13 2019 +0800
+
+    a little amend
+
+[33mcommit ba6b1965fa03fdbc0e301da912a825227a142304[m
+Author: SpairFan <spairfan@126.com>
+Date:   Mon Apr 8 17:19:23 2019 +0800
+
+    edit file
+
+[33mcommit 86e251190aae746f560f87a41f685da4c58a3c6e[m
+Author: SpairFan <spairfan@126.com>
+Date:   Fri Mar 29 17:57:53 2019 +0800
+
+    edit systemSetting Components after will amend components style
+
+[33mcommit da35486f4b4d3e27112887d64f350dfbe48ad150[m
+Author: SpairFan <spairfan@126.com>
+Date:   Fri Mar 29 11:48:35 2019 +0800
+
+    add request delay plugin
+
+[33mcommit 26b8a53d4995c32f44a2d82ef1c4768175f00da5[m
+Author: SpairFan <spairfan@126.com>
+Date:   Fri Mar 29 10:26:34 2019 +0800
+
+    edit css styles and map api
+
+[33mcommit 14922d7773f19fb6a672f890a208cfacc3686238[m
+Author: SpairFan <spairfan@126.com>
+Date:   Thu Mar 28 17:51:30 2019 +0800
+
+    repair long lati question
+
+[33mcommit 25ed6d5a5ca61c5abc1a9f3e3c9505e376bbb7c9[m
+Author: SpairFan <spairfan@126.com>
+Date:   Thu Mar 28 17:25:37 2019 +0800
+
+    add amap api, but data lati has question lead to load cast  error
+
+[33mcommit 5a7529e2c1657f24a2461cbb00819ed3028553a1[m
+Author: SpairFan <spairfan@126.com>
+Date:   Thu Mar 28 11:50:35 2019 +0800
+
+    edit validate rules and callback return parameter
+
+[33mcommit 95810340e7bf2b5cb39771cb370660584b3fc53e[m
+Author: zhangfan <1598111569@qq.com>
+Date:   Wed Mar 27 22:01:50 2019 +0800
+
+    validate exist big performance bug lead to Chrome collapse
+
+[33mcommit 986244a51cfc98f0e5dc0c060336b0f892021aef[m
+Author: SpairFan <spairfan@126.com>
+Date:   Wed Mar 27 17:39:21 2019 +0800
+
+    add form components or edit index page styles
+
+[33mcommit 6f3b8c11f638ca7fbfc3386807deca1fabfbc1cf[m
+Author: zhangfan <1598111569@qq.com>
+Date:   Tue Mar 26 21:10:09 2019 +0800
+
+    edit layout components styles
+
+[33mcommit 7381d66d26ab9a36d2c192f806c85c3747e8e8b1[m
+Author: zhangfan <1598111569@qq.com>
+Date:   Tue Mar 26 20:36:15 2019 +0800
+
+    edit layout components styles
+
+[33mcommit b13e291d18df86beadbe0fbdc7117fb158ca9543[m
+Author: SpairFan <spairfan@126.com>
+Date:   Tue Mar 26 17:42:39 2019 +0800
+
+    add user components delete no use header footer components
+
+[33mcommit ae6171eb945022c59852165b604412db5393b53e[m
+Author: SpairFan <spairfan@126.com>
+Date:   Tue Mar 26 14:44:25 2019 +0800
+
+    add analysis chart
+
+[33mcommit 8513aa9e6aabb7f5e650389e9cb9ff261066060c[m
+Author: SpairFan <spairfan@126.com>
+Date:   Mon Mar 25 17:32:12 2019 +0800
+
+    add table interface
+
+[33mcommit 84bf4205f9fa5ab67882c34f38601e60c5bdabed[m
+Author: SpairFan <spairfan@126.com>
+Date:   Mon Mar 25 15:39:44 2019 +0800
+
+    edit component add axios request
+
+[33mcommit 5a40365108d5979094fb53f205af7cb2b9fef40e[m
+Merge: da174a8 574a6d0
+Author: SpairFan <spairfan@126.com>
+Date:   Mon Mar 25 09:20:53 2019 +0800
+
+    solve conflict
+
+[33mcommit da174a8776afc3d4fd9085418aaa3e80201c2be4[m
+Author: SpairFan <spairfan@126.com>
+Date:   Mon Mar 25 09:09:47 2019 +0800
+
+    merge conflict
+
+[33mcommit 574a6d09fb5ac2fb0a5022f8b213df4e2bfe1981[m
+Author: zhangfan <1598111569@qq.com>
+Date:   Sun Mar 24 20:48:30 2019 +0800
+
+    add mockjs test api data
+
+[33mcommit a1904a0a075d111b7be0f265e83c525c46c627eb[m
+Merge: 99cfdb5 74d5a5f
+Author: zhangfan <1598111569@qq.com>
+Date:   Fri Mar 22 19:36:16 2019 +0800
+
+    Merge branch 'master' of https://github.com/SpairCode/myumi
+
+[33mcommit 99cfdb57594255f7b584698a7c10eb0d915d6c86[m
+Author: zhangfan <1598111569@qq.com>
+Date:   Fri Mar 22 19:35:26 2019 +0800
+
+    edit css
+
+[33mcommit 74d5a5f7c850030cbc76cd63664c6b86e1de1d8e[m
+Author: SpairFan <spairfan@126.com>
+Date:   Fri Mar 22 17:18:21 2019 +0800
+
+    amend text msg
+
+[33mcommit e8475a606eb0e7ef4848dc53600047251602fbf1[m
+Author: SpairFan <spairfan@126.com>
+Date:   Fri Mar 22 15:49:23 2019 +0800
+
+    add analysis component prepare add mock data
+
+[33mcommit 2280ef1230feb9aa842b49cf9800dcf7713bbc79[m
+Author: SpairFan <spairfan@126.com>
+Date:   Fri Mar 22 11:41:54 2019 +0800
+
+    edit index page layout
+
+[33mcommit 6cee74772b5386c7101ee04bf50a09056e2e1843[m
+Author: SpairFan <spairfan@126.com>
+Date:   Thu Mar 21 17:20:52 2019 +0800
+
+    amend index page styles,  try use dva in components
+
+[33mcommit e419231ef857017b4208653359ae66e671b1d68e[m
+Author: SpairFan <spairfan@126.com>
+Date:   Thu Mar 21 09:51:34 2019 +0800
+
+    amend config files or port number
+
+[33mcommit b81e45fce048261b1f9c9dd5234742b02568ba76[m
+Author: SpairFan <spairfan@126.com>
+Date:   Wed Mar 20 16:52:25 2019 +0800
+
+    edit md describe file
+
+[33mcommit 6413cf73dc7db8a4576d37e26dfb2cd784b74c4a[m
+Author: SpairFan <spairfan@126.com>
+Date:   Wed Mar 20 15:35:13 2019 +0800
+
+    add models files
+
+[33mcommit 3a505a357f51234e500aa4b2fcdb08302155130f[m
+Author: zhangfan <1598111569@qq.com>
+Date:   Tue Mar 19 20:42:16 2019 +0800
+
+    del file
+
+[33mcommit 54b008626de07a6faf0e841ebe93c8204ba6b51c[m
+Author: zhangfan <1598111569@qq.com>
+Date:   Tue Mar 19 20:36:22 2019 +0800
+
+    edit animation
+
+[33mcommit e20464e05f41044348d36cf06e33fc65681d29d8[m
+Author: SpairFan <spairfan@126.com>
+Date:   Tue Mar 19 18:01:51 2019 +0800
+
+    add animation
+
+[33mcommit 3e4922650e3e8cffc96862affeac377dc0fd836e[m
+Author: SpairFan <spairfan@126.com>
+Date:   Tue Mar 19 15:40:26 2019 +0800
+
+    finish Login Component
+
+[33mcommit 219e8e4e17663a206438de6f341e63b8e884ab31[m
+Author: SpairFan <spairfan@126.com>
+Date:   Tue Mar 19 11:42:51 2019 +0800
+
+    add umi/router edit css style
+
+[33mcommit da617d24948c2362e320a4da5f06f50a87ef1eff[m
+Author: SpairCode <1598111569@qq.com>
+Date:   Mon Mar 18 17:45:52 2019 +0800
+
+    Create README.md
+
+[33mcommit 195c0047ec8f5924fd83de38f3825ddc51ad8fa8[m
+Author: SpairFan <spairfan@126.com>
+Date:   Mon Mar 18 17:42:19 2019 +0800
+
+    UMI.js Demos
