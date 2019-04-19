@@ -22,6 +22,7 @@ class HaveList extends React.Component {
         noteList: []
       },
     })
+    console.log(this)
   }
 
   // 确认是否删除该条数据

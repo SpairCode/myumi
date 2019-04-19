@@ -1,6 +1,6 @@
 import Mock from 'mockjs'
 import { delay } from 'roadhog-api-doc' // 模拟网络延迟
-import request from 'request'
+import request from '../mock/request'
 
 // list port data
 const browseData = (req, res) => {
