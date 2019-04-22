@@ -7,6 +7,9 @@ import styles from '../note/haveList.css'
 import NoteForm from '../note/noteForm'
 
 const confirm = Modal.confirm
+@connect(({ noteList }) => ({
+  noteList
+}))
 class HaveList extends React.Component {
 
   state = {
@@ -14,19 +17,23 @@ class HaveList extends React.Component {
     editArray: [] // 逾期修改数组
   }
 
-  componentWillMount () {
+  componentDidMount () {
     const { dispatch } = this.props
     dispatch({
       type: 'note/fetch',
-      payload: {
-        noteList: []
-      },
     })
     console.log(this)
   }
 
   // 确认是否删除该条数据
   operateList = (key) => {
+    const { dispatch } = this.props
+    dispatch({
+      type: 'note/demo',
+      payload: { 
+        noteList: this.props.noteList
+      },
+    })
     confirm({
       title: '便签删除',
       content: `你确定要删除该条便签数据？`,
@@ -106,7 +113,7 @@ class HaveList extends React.Component {
 
   render () {
     return (
-      <div className={styles.haveListBox}>
+      <div className={styles.haveListBox}>`
         { this.renderList() }
         {/* 修改弹窗 */}
         <Modal visible={this.state.visible} onCancel={ () => { this.setState({ visible: false }) } }>
@@ -117,4 +124,4 @@ class HaveList extends React.Component {
   }
 }
 
-export default connect(({ noteList }) => ({ noteList }))(HaveList)
+export default HaveList

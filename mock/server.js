@@ -85,7 +85,7 @@ const systemSetting = (req, res) => {
 // note list port data
 const noteForm = (req, res) => {
   res.send(Mock.mock({
-    'list|16': [{
+    'noteList|16': [{
       'title': '@last',
       'range-picker': ['@now', '@now(second)'],
       'select|1-3': 1,
@@ -107,5 +107,5 @@ const proxy = {
 export default delay(proxy, 1000)
 
 export async function queryNoteList() {
-  return request('http://192.168.10.233:8080/api/noteForm/noteForm')
+  return request('http://192.168.10.229:8080/api/noteForm/noteForm')
 }

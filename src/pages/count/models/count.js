@@ -1,8 +1,18 @@
 export default {
   namespace: 'count',
-  state: 666,
+  state: {
+    count: 666
+  },
   reducers: {
-    'add'  (count) { return count + 1 },
-    'minus' (count) { return count - 1 }
+    add (state, payload) {
+      return {
+        count: state.count + 1
+      }
+    },
+    minus (state, payload) { 
+      return {
+        count: state.count -1
+      }
+    }
   },
 }

@@ -16,7 +16,6 @@ class noteForm extends React.Component {
   }
 
   handleSubmit = (e) => {
-    debugger
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
