@@ -29,11 +29,10 @@ class HaveList extends React.Component {
   operateList = (key) => {
     const { dispatch } = this.props
     dispatch({
-      type: 'note/demo',
-      payload: { 
-        noteList: this.props.noteList
-      },
+      type: 'note/fetch',
+      payload: { key },
     })
+    console.log(this)
     confirm({
       title: '便签删除',
       content: `你确定要删除该条便签数据？`,
@@ -113,7 +112,7 @@ class HaveList extends React.Component {
 
   render () {
     return (
-      <div className={styles.haveListBox}>`
+      <div className={styles.haveListBox}>
         { this.renderList() }
         {/* 修改弹窗 */}
         <Modal visible={this.state.visible} onCancel={ () => { this.setState({ visible: false }) } }>

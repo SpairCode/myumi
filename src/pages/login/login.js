@@ -1,7 +1,10 @@
 import React from 'react'
 import styles from './login.css'
 import router from 'umi/router'
+import { connect } from 'dva'
 import { Form, Icon, Input, Button, Checkbox, message } from 'antd'
+
+@connect(({ userName }) => ({ userName }))
 
 class Login extends React.Component {
 
@@ -17,8 +20,13 @@ class Login extends React.Component {
       if (!err) {
         console.dir(values)
         // 预先存储至localStroage,之后存储至Redux
-        localStorage.setItem('name', values.userName)
-        localStorage.setItem('password', values.password)
+        const { dispatch } = this.props
+        dispatch({
+          type: 'login/saveUserName',
+          payload: { 
+            'userName': values.userName
+          }
+        })
         router.push('/analysis/analysis')
       } else {
         message.error('用户名或密码输入错误!')

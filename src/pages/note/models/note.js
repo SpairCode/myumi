@@ -29,13 +29,11 @@ export default {
       console.log(state.noteList)
       console.log(action)
       console.log('--- demo ---')
-      return {
-        noteList: action.payload
-      }
     },
     queryList (state, action) { // noteList import data failed don't konw cause
     console.log(action.payload)
       return {
+        ...state,
         noteList: action.payload
       }
     }
