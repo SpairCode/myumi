@@ -3,14 +3,16 @@ import { queryNoteList } from '../../../../mock/server'
 export default {
   name: 'note',
   state: {
-    noteList: [],
+    noteList: [], // 未完成列表
+    overList: [], // 已完成列表
+    loading: true
   },
 
   effects: {
     *fetch({ payload }, { call, put }) {
       const response = yield call(queryNoteList, payload)
       yield put({
-        type: 'queryList',
+        type: 'save',
         payload: Array.isArray(response.noteList) ? response.noteList : [],
       })
     },
@@ -24,18 +26,27 @@ export default {
   },
 
   reducers: {
-    demo (state, action) {
-      console.log('--- demo ---')
-      console.log(state.noteList)
-      console.log(action)
-      console.log('--- demo ---')
-    },
-    queryList (state, action) { // noteList import data failed don't konw cause
-    console.log(action.payload)
+    editCompleteList (state, action) { // base query id delete list no use data
       return {
-        ...state,
-        noteList: action.payload
+        noteList: state.noteList.filter(list => list.id !== action.payload.id), // return noteList
+        loading: false
       }
+    },
+    save (state, action) { // save queryData List
+      return {
+        noteList: action.payload,
+        loading: false
+      }
+    },
+    saveOverList (state, action) {
+      return {
+        overList: state.overList.concat(action.payload.list)
+      }
+    },
+    queryOverList (state, action) {
+     return {
+       overList: state.overList
+     }
     }
   },
 }

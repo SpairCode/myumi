@@ -88,8 +88,9 @@ const noteForm = (req, res) => {
     'noteList|16': [{
       'title': '@last',
       'range-picker': ['@now', '@now(second)'],
-      'select|1-3': 1,
-      'textarea': '@cparagraph'
+      'select|1-3': 3,
+      'textarea': '@cparagraph',
+      'id|+1': 0
     }]
   }))
 }
