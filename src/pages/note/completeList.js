@@ -20,7 +20,6 @@ class completeList extends React.Component {
     if (this.props.note.overList !== undefined) {
       listArray = this.props.note.overList
     }
-    console.log(listArray)
     const listItem = listArray.map((list, key) => 
       <li key={key} title={`开始日期： ${moment().format('YYYY-MM-DD',list['range-picker'][0])} ~ 结束日期：${moment().format('YYYY-MM-DD',list['range-picker'][1])} `}>
         <Row>

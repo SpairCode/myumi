@@ -28,23 +28,32 @@ export default {
   reducers: {
     editCompleteList (state, action) { // base query id delete list no use data
       return {
+        ...state, // other property status
         noteList: state.noteList.filter(list => list.id !== action.payload.id), // return noteList
-        loading: false
+      }
+    },
+    addCompleteList (state, action) {
+      return {
+        ...state,
+        noteList: state.noteList.concat(action.payload.values)
       }
     },
     save (state, action) { // save queryData List
       return {
         noteList: action.payload,
+        overList: [],
         loading: false
       }
     },
     saveOverList (state, action) {
       return {
+        ...state,
         overList: state.overList.concat(action.payload.list)
       }
     },
     queryOverList (state, action) {
      return {
+      ...state,
        overList: state.overList
      }
     }

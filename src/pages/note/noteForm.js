@@ -1,14 +1,16 @@
 import React from 'react'
 import { Form, Input, DatePicker, Select, Button } from 'antd'
+import { connect } from 'dva'
+
+@connect(({ note }) => ({ note }))
 
 class noteForm extends React.Component {
-  // 子组件调用父组件方法
+  // Child components transfer parent components methods
 
   componentWillMount () {
-    // decide this is new form or edit old form
-    if (this.props.editArray) {
-     this.state.newList.push(this.props.editArray)
-    }
+    // 1. new Form
+    // 2. validate Form
+    // 3. will be value pass by  @connect save in noteList array
   }
 
   state = {
@@ -19,18 +21,17 @@ class noteForm extends React.Component {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        // 判断localStorage 是否有值
-        if(localStorage.getItem('noteList')) {
-          let listArray = JSON.parse(localStorage.getItem('noteList'))
-          listArray.push(values)
-          localStorage.setItem('noteList', JSON.stringify(listArray))
-        } else {
-          this.state.newList.push(values)
-          localStorage.setItem('noteList', JSON.stringify(this.state.newList))
-        }
-        // 调用父组件方法
+        // success
+        const { dispatch } = this.props
+        dispatch({
+          type: 'note/addCompleteList',
+          payload: { 
+            values: values
+          }
+        })
+        // tranfer parent components methods
         this.props.clearForm()
-        // 重置表单
+        // reset Form
         this.props.form.resetFields()
       }
     })
@@ -92,9 +93,9 @@ class noteForm extends React.Component {
             ],
           })(
             <Select placeholder="Please select work significance">
-              <Option value="1"> A </Option>
-              <Option value="2"> B </Option>
-              <Option value="3"> C </Option>
+              <Option value={1}> A </Option>
+              <Option value={2}> B </Option>
+              <Option value={3}> C </Option>
             </Select>
           )}
         </Form.Item>

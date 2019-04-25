@@ -23,6 +23,7 @@ class HaveList extends React.Component {
     dispatch({
       type: 'note/fetch'
     })
+    console.log(this)
   }
 
   componentWillUnmount () {
@@ -52,6 +53,7 @@ class HaveList extends React.Component {
         id: key
       }
     })
+    //  the overList equal to undefined
     dispatch({
       type: 'note/saveOverList',
       payload: {
