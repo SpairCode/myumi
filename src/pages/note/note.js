@@ -8,16 +8,13 @@ import CompleteList from '../note/completeList'
 class Note extends React.Component {
 
   state = {
-    haveArray: [], // 正在进行中的任务
-    completeArray: [], // 已完成的任务
-    visible: false, // 显示隐藏新增便签表单
+    visible: false, // show or hide new NoteForm
   }
 
   clearForm = () => {
     this.setState({
       visible: false
     })
-    console.log('success')
   }
 
   render () {

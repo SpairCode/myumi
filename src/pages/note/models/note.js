@@ -3,28 +3,65 @@ import { queryNoteList } from '../../../../mock/server'
 export default {
   name: 'note',
   state: {
-    noteList: [],
+    noteList: [], // 未完成列表
+    overList: [], // 已完成列表
+    loading: true
   },
+
   effects: {
     *fetch({ payload }, { call, put }) {
       const response = yield call(queryNoteList, payload)
-      console.log(response)
       yield put({
-        type: 'queryList',
-        payload: Array.isArray(response) ? response : [],
+        type: 'save',
+        payload: Array.isArray(response.noteList) ? response.noteList : [],
       })
+    },
+    *appendFetch({ payload }, { call, put }) {
+      const response = yield call(queryNoteList, payload);
+      yield put({
+        type: 'appendList',
+        payload: Array.isArray(response) ? response : [],
+      });
     }
   },
+
   reducers: {
-    completeWork(data, key) {
-      key.payload.listData.splice(key.payload.key, 1)
-      return key.payload.listData
+    editCompleteList (state, action) { // base query id delete list no use data
+      return {
+        ...state, // other property status
+        noteList: state.noteList.filter(list => list.id !== action.payload.id), // return noteList
+      }
     },
-    queryList(state, action) {
+    addCompleteList (state, action) {
       return {
         ...state,
-        noteList: action.payload
+        noteList: state.noteList.concat(action.payload.values)
       }
+    },
+    deleteComplete (state, action) {
+      return {
+        ...state,
+        noteList: state.noteList.splice(action.payload.index, 1)
+      }
+    },
+    save (state, action) { // save queryData List
+      return {
+        noteList: action.payload,
+        overList: [],
+        loading: false
+      }
+    },
+    saveOverList (state, action) {
+      return {
+        ...state,
+        overList: state.overList.concat(action.payload.list)
+      }
+    },
+    queryOverList (state, action) {
+     return {
+      ...state,
+       overList: state.overList
+     }
     }
   },
 }

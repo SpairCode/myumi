@@ -34,6 +34,10 @@ body {
   display: none;
 }
 
+.headerBar > span {
+  margin: 0px 20px; 
+}
+
 /* 滚动条样式 */
 ::-webkit-scrollbar-thumb {
   background-color: transparent;
