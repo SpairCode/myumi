@@ -4,7 +4,7 @@ import { connect } from 'dva'
 // import router from 'umi/router'
 import { Button, Modal, Row, Col, Spin, Popconfirm, message } from 'antd'
 import styles from '../note/haveList.css'
-import NoteForm from '../note/noteForm'
+import EditNoteForm from '../note/editNoteForm'
 
 // const confirm = Modal.confirm
 
@@ -45,13 +45,20 @@ class HaveList extends React.Component {
     message.success('删除取消')
   }
 
+  // close edit form
+  closeForm = () => {
+    this.setState({
+      visible: false
+    })
+  }
+
   // overude list array data
   overRude = (data) => {
     this.setState({
       visible: true,
       editArray: data
     })
-    // NoteForm 未设置 initialValue
+    // editNoteForm 未设置 initialValue
   }
 
   // 该条任务已经完成
@@ -109,8 +116,8 @@ class HaveList extends React.Component {
         <div className={styles.haveListBox}>
           { this.renderList() }
           {/* 修改弹窗 */}
-          <Modal visible={this.state.visible} onCancel={ () => { this.setState({ visible: false }) } }>
-            <NoteForm editArray={this.state.editArray}></NoteForm>
+          <Modal visible={this.state.visible} footer={null} onCancel={ () => { this.setState({ visible: false }) } }>
+            <EditNoteForm editArray={this.state.editArray} closeForm={this.closeForm}></EditNoteForm>
           </Modal>
         </div>
       </Spin>

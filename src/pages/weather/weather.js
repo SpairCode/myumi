@@ -41,16 +41,18 @@ class weatherService extends React.Component {
       method: 'GET'
     }).then((res) => {
       if (res.status === 200) {
-        message.success('加载成功!')
         if (res.data.lives.length !== 0) {
+          // success
           this.setState({
             cityList: res.data.lives[0],
             loading: false
           })
         } else {
-          message.error('暂无该城市数据!')
+          // try again
+          this.queryWeather()
         }
       } else {
+        //  try to fail
         message.error('请您按F5刷新页面!')
       }
     })

@@ -5,12 +5,12 @@ import Link  from 'umi/link'
 import { Layout, Menu, Icon } from 'antd'
 import HederBar from './headerBar'
 
-function BasicLayout(props) {
+function BasicLayout(props) { // child components
   if (props.location.pathname === '/login/login' || props.location.pathname === '/404') {
-    return <div className={`${styles.w100} ${styles.h100} `}>{ props.children }</div>
+    return <div className={`${styles.w100} ${styles.h100} `}> { props.children } </div>
   } else {
     const { Content, Footer, Sider } = Layout
-    let menuArray = ['1']
+    let menuArray = JSON.parse(localStorage.getItem('menuArray')) || ['1']
     return (
       <div className={styles.normal}>
         <div className={styles.content}>
@@ -24,7 +24,7 @@ function BasicLayout(props) {
                 theme="light"
               >
                 <div className={styles.logo}> System </div>
-                <Menu theme="light" mode="inline" defaultSelectedKeys={ menuArray } onClick={(e) => { menuArray.push(e.key); menuArray.splice(0, 1) } }>
+                <Menu theme="light" mode="inline" defaultSelectedKeys={ menuArray } onClick={(e) => { menuArray.push(e.key); menuArray.splice(0, 1); localStorage.setItem('menuArray', JSON.stringify(menuArray)) } }>
                   <Menu.Item key="1">
                     <Icon type="bars" />
                     <span className="nav-text"> <Link to='/analysis/analysis'> 参会列表 </Link> </span>

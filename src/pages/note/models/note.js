@@ -44,6 +44,12 @@ export default {
         noteList: state.noteList.filter(list => list.id !== action.payload.id)
       }
     },
+    editListItem (state, action) {
+      return {
+        ...state,
+        noteList: state.noteList.filter(list => list.id !== action.payload.list.id).concat(action.payload.list)
+      }
+    },
     save (state, action) { // save queryData List
       return {
         noteList: action.payload,

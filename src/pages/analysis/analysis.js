@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './analysis.css'
 import { Row, Col, Icon, Table, Button, Divider, Spin } from 'antd'
-// import { queryBrowseData } from '../../../mock/api'
 import axios from 'axios'
 
 class Analysis extends React.Component {
@@ -56,7 +55,7 @@ class Analysis extends React.Component {
     const list = this.state.list
     const nameList = this.state.listArray
     const listItem = list.map((list, key) =>
-      <Col key={ key } className={[key === 0||3 ? `${styles.orange}` : `none`, key === 1 ? `${styles.purple}` : `none`, key === 2 ? `${styles.blue}` : `none`]} span={4} title={`${nameList[key]} : ${list.number}`}>
+      <Col key={ key } className={[key === 0||3 ? `${styles.orange}` : `none`, key === 1 ? `${styles.purple}` : `none`, key === 2 ? `${styles.blue}` : `none`]} span={4}>
         <div className={styles.listCard}>
           <div> { nameList[key] } </div>
           <div> { list.number } </div>

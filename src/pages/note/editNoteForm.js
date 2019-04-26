@@ -4,13 +4,14 @@ import { connect } from 'dva'
 
 @connect(({ note }) => ({ note }))
 
-class noteForm extends React.Component {
+class editNoteForm extends React.Component {
   // Child components transfer parent components methods
 
   componentWillMount () {
     // 1. new Form
     // 2. validate Form
     // 3. will be value pass by  @connect save in noteList array
+    console.log(this.props)
   }
 
   state = {
@@ -22,15 +23,16 @@ class noteForm extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         // success
+        values.id = this.props.editArray.id
         const { dispatch } = this.props
         dispatch({
-          type: 'note/addCompleteList',
-          payload: { 
-            values: values
+          type: 'note/editListItem',
+          payload: {
+            list: values
           }
         })
         // tranfer parent components methods
-        this.props.clearForm()
+        this.props.closeForm()
         // reset Form
         this.props.form.resetFields()
       }
@@ -66,6 +68,7 @@ class noteForm extends React.Component {
             }, {
               required: true, message: 'Please input your work title!',
             }],
+            initialValue: this.props.editArray.title
           })(
             <Input />
           )}
@@ -82,6 +85,7 @@ class noteForm extends React.Component {
             }, {
               validator: this.validateToNextPassword,
             }],
+            initialValue: this.props.editArray.textarea
           })(
             <TextArea />
           )}
@@ -91,6 +95,7 @@ class noteForm extends React.Component {
             rules: [
               { required: true, message: 'Please select work significance!' },
             ],
+            initialValue: this.props.editArray.select
           })(
             <Select placeholder="Please select work significance">
               <Option value={1}> A </Option>
@@ -107,4 +112,4 @@ class noteForm extends React.Component {
   }
 }
 
-export default Form.create()(noteForm)
+export default Form.create()(editNoteForm)
