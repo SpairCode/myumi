@@ -3,15 +3,10 @@ import Link  from 'umi/link'
 import { Menu, Icon, Layout, Badge, Dropdown, Avatar } from 'antd'
 import { connect } from 'dva'
 
-@connect(({ userName }) => ({ userName }))
+@connect(({ login }) => ({ login }))
 
 class headerBar extends React.Component {
   render () {
-    // const { dispatch } = this.props
-    // dispatch({
-    //   type: 'login/queryUserName',
-    // })
-    // console.log(this)
     const menulist = (
       <Menu>
         <Menu.Item>
@@ -37,7 +32,7 @@ class headerBar extends React.Component {
           <Dropdown overlay={menulist}>
             <span>
               <Avatar src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2637329911,3521077389&fm=58&bpow=649&bpoh=808" />
-              <span style={{ margin: '0px 5px' }}> Demo </span>
+              <span style={{ margin: '0px 5px' }}> { this.props.login.userName } </span>
               <Icon type="caret-down"/>
             </span>
           </Dropdown>

@@ -8,18 +8,19 @@ class weatherService extends React.Component {
   state = {
     loading: true,
     search: false,
-    cityList: [], // 根据高德地图返回的城市
+    cityList: [], // amap api return city name
     inputCity: {
       casts: []
-    } // 用户输入的城市
+    } // user input search city name
   }  
 
   componentDidMount () {
+    // Amap weather api first time search appear to a error
     this.queryData()
   }
 
   queryData = () => {
-    // 高德地图 JS API  
+    // Amap js api  
     let url = 'https://webapi.amap.com/maps?v=1.4.13&key=47d2d84ac020f60988ef016b93fef0ae&callback=onLoad'
     let jsapi = document.createElement('script')
     jsapi.charset = 'utf-8'
@@ -34,17 +35,21 @@ class weatherService extends React.Component {
   }
 
   queryWeather = () => {
-    // 高德地图Web服务API
+    // Amap web service api
     let baseUrl = 'https://restapi.amap.com/v3/weather/weatherInfo?key=748a63397b6df98234e0e873a73e7619&city=' + localStorage.getItem('adcode') + '&extensions=base&output=JSON'  
     axios(baseUrl, {
       method: 'GET'
     }).then((res) => {
       if (res.status === 200) {
         message.success('加载成功!')
-        this.setState({
-          cityList: res.data.lives[0],
-          loading: false
-        })
+        if (res.data.lives.length !== 0) {
+          this.setState({
+            cityList: res.data.lives[0],
+            loading: false
+          })
+        } else {
+          message.error('暂无该城市数据!')
+        }
       } else {
         message.error('请您按F5刷新页面!')
       }

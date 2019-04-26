@@ -90,7 +90,7 @@ class HaveList extends React.Component {
             <Popconfirm title="Are you sure delete this task?" onConfirm={ () => { this.confirm(list.id) } } onCancel={ () => { this.cancel(key) } } okText="Yes" cancelText="No">
               <Button type="danger" size="small"> 删除 </Button>
             </Popconfirm>
-            <Button onClick={ () => this.overRude(listArray[key]) } type="default" size="small"> 逾期 </Button>
+            <Button onClick={ () => {  this.overRude(listArray[key]) } } type="default" size="small"> 逾期 </Button>
             <Button onClick={ () => { this.completeWork(list.id, list) } } type="primary" size="small"> 完成 </Button>
           </Col>
         </Row>

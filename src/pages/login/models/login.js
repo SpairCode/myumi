@@ -6,11 +6,15 @@ export default {
   reducers: {
     saveUserName (state, action) {
       return {
+        ...state,
         userName: action.payload.userName
       }
     },
-    // queryUserName (state, action) {
-    //   return state.userName
-    // } 
+    queryUserName (state, action) {
+      return {
+        ...state,
+        ...action.payload
+      }
+    } 
   },
 }

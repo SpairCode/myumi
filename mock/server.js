@@ -88,7 +88,7 @@ const noteForm = (req, res) => {
     'noteList|16': [{
       'title': '@last',
       'range-picker': ['@now', '@now(second)'],
-      'select|1-3': 3,
+      'select|1-2': 2,
       'textarea': '@cparagraph',
       'id|+1': 0
     }]
@@ -109,5 +109,5 @@ export default delay(proxy, 1000)
 
 export async function queryNoteList() {
   // return request('http://192.168.138.1:8080/api/noteForm/noteForm')
-  return request('http://192.168.10.229:8080/api/noteForm/noteForm')
+  return request('http://192.168.10.229:8080/api/noteForm/noteForm') 
 }

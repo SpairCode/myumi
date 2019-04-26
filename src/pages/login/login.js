@@ -4,7 +4,7 @@ import router from 'umi/router'
 import { connect } from 'dva'
 import { Form, Icon, Input, Button, Checkbox, message } from 'antd'
 
-@connect(({ userName }) => ({ userName }))
+@connect(({ login }) => ({ login }))
 
 class Login extends React.Component {
 

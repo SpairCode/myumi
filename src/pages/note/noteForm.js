@@ -11,10 +11,11 @@ class noteForm extends React.Component {
     // 1. new Form
     // 2. validate Form
     // 3. will be value pass by  @connect save in noteList array
+    console.log(this.props.editArray)
   }
 
   state = {
-    newList: [], // 新建表单
+    newList: [], // new Form Array
   }
 
   handleSubmit = (e) => {
@@ -53,7 +54,7 @@ class noteForm extends React.Component {
         sm: { span: 16 },
       },
     }
-    // 验证规则
+    // validate rule
     const rangeConfig = {
       rules: [{ type: 'array', required: true, message: 'Please select time!' }],
     }
