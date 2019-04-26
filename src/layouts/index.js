@@ -23,7 +23,7 @@ function BasicLayout(props) {
                 theme="light"
               >
                 <div className={styles.logo}> System </div>
-                <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
+                <Menu theme="light" mode="inline">
                   <Menu.Item key="1">
                     <Icon type="bars" />
                     <span className="nav-text"> <Link to='/analysis/analysis'> 参会列表 </Link> </span>
