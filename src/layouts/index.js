@@ -5,6 +5,7 @@ import Link  from 'umi/link'
 import { Layout, Menu, Icon } from 'antd'
 import HederBar from './headerBar'
 
+
 function BasicLayout(props) {
   if (props.location.pathname === '/login/login' || props.location.pathname === '/404') {
     return <div className={`${styles.w100} ${styles.h100} `}>{ props.children }</div>
@@ -23,7 +24,7 @@ function BasicLayout(props) {
                 theme="light"
               >
                 <div className={styles.logo}> System </div>
-                <Menu theme="light" mode="inline">
+                <Menu theme="light" mode="inline" onClick={(e) => { console.log(e.key) } }>
                   <Menu.Item key="1">
                     <Icon type="bars" />
                     <span className="nav-text"> <Link to='/analysis/analysis'> 参会列表 </Link> </span>

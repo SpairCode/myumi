@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import { connect } from 'dva'
 // import router from 'umi/router'
-import { Button, Modal, Row, Col, Spin } from 'antd'
+import { Button, Modal, Row, Col, Spin, Popconfirm, message } from 'antd'
 import styles from '../note/haveList.css'
 import NoteForm from '../note/noteForm'
 
@@ -23,19 +23,29 @@ class HaveList extends React.Component {
     dispatch({
       type: 'note/fetch'
     })
-    console.log(this)
   }
 
   componentWillUnmount () {
     console.log('减少内存泄漏操作')
   }
 
-  // 确认是否删除该条数据
-  operateList = (key) => {
-    console.log(key)
+  // confirm delete list array data
+  confirm = (id) => {
+    const { dispatch } = this.props
+    dispatch({
+      type: 'note/deleteComplete',
+      payload: {
+        id: id
+      }
+    })
+    message.success('删除成功')
+  }
+  
+  cancel = (e) => {
+    message.success('删除取消')
   }
 
-  // 逾期编辑操作
+  // overude list array data
   overRude = (data) => {
     this.setState({
       visible: true,
@@ -77,7 +87,9 @@ class HaveList extends React.Component {
           <Col span={12}> <span> 开始日期： { moment().format('YYYY-MM-DD',list['range-picker'][0]) } ~ 结束日期： { moment().format('YYYY-MM-DD',list['range-picker'][1]) } </span> </Col>
           <Col span={2}> <span className={[list.select === 1 ? `${styles.one}`: `${styles.three}`]} ></span> </Col>
           <Col span={6} className={styles.ButtonBox}> 
-            <Button onClick={ () => this.operateList(key) } type="danger" size="small"> 操作 </Button>
+            <Popconfirm title="Are you sure delete this task?" onConfirm={ () => { this.confirm(list.id) } } onCancel={ () => { this.cancel(key) } } okText="Yes" cancelText="No">
+              <Button type="danger" size="small"> 删除 </Button>
+            </Popconfirm>
             <Button onClick={ () => this.overRude(listArray[key]) } type="default" size="small"> 逾期 </Button>
             <Button onClick={ () => { this.completeWork(list.id, list) } } type="primary" size="small"> 完成 </Button>
           </Col>

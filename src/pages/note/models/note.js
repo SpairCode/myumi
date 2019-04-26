@@ -38,6 +38,12 @@ export default {
         noteList: state.noteList.concat(action.payload.values)
       }
     },
+    deleteComplete (state, action) {
+      return {
+        ...state,
+        noteList: state.noteList.filter(list => list.id !== action.payload.id)
+      }
+    },
     save (state, action) { // save queryData List
       return {
         noteList: action.payload,
