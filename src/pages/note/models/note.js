@@ -57,6 +57,12 @@ export default {
         loading: false
       }
     },
+    changeLoding (state, action) { // change loding state
+      return {
+        ...state,
+        loading: true
+      }
+    },
     saveOverList (state, action) {
       return {
         ...state,

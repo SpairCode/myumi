@@ -27,6 +27,10 @@ class HaveList extends React.Component {
 
   componentWillUnmount () {
     console.log('减少内存泄漏操作')
+    const { dispatch } = this.props
+    dispatch({
+      type: 'note/changeLoding'
+    })
   }
 
   // confirm delete list array data

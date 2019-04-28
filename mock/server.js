@@ -107,7 +107,14 @@ const proxy = {
 
 export default delay(proxy, 1000)
 
-export async function queryNoteList() {
-  // return request('http://192.168.138.1:8080/api/noteForm/noteForm')
-  return request('http://192.168.10.229:8080/api/noteForm/noteForm') 
+export async function queryNoteList () {
+  return request('/api/noteForm/noteForm') 
 }
+
+export async function queryTableData () {
+  return request('/api/analysis/table')
+}
+
+export async function queryBrowseData () {
+  return request('/api/analysis/browse')
+} 

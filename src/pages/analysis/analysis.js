@@ -1,48 +1,26 @@
 import React from 'react'
 import styles from './analysis.css'
 import { Row, Col, Icon, Table, Button, Divider, Spin } from 'antd'
-import axios from 'axios'
+import { connect } from 'dva'
+
+@connect(({ analysis }) => ({ analysis }))
 
 class Analysis extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      list: [],
-      listArray: [],
-      tableArray: [],
-      loading: true
-    }
-  }
-
   componentDidMount () {
-    this.queryListData()
-    this.queryTableData()
-  }
-
-  queryListData = () => {
-    axios('/api/analysis/browse', {
-      method: 'GET'
-    }).then((res) => {
-      if (res.status === 200) {
-        this.setState({
-          list: res.data.list,
-          listArray: res.data.listArray
-        })
-      }
+    const { dispatch } = this.props
+    dispatch({
+      type: 'analysis/fetch'
+    })
+    dispatch({
+      type: 'analysis/fetchBrowseData'
     })
   }
 
-  queryTableData = () => {
-    axios('/api/analysis/table', {
-      method: 'GET'
-    }).then((res) => {
-      if (res.status === 200) {
-        this.setState({
-          tableArray: res.data.list,
-          loading: false
-        })
-      } 
+  componentWillUnmount () {
+    const { dispatch } = this.props
+    dispatch({
+      type: 'analysis/changeLoading'
     })
   }
 
@@ -52,8 +30,9 @@ class Analysis extends React.Component {
 
   // Crad Data Render
   listCard = () => {
-    const list = this.state.list
-    const nameList = this.state.listArray
+    console.log(this)
+    const list = this.props.analysis.list
+    const nameList = this.props.analysis.listArray
     const listItem = list.map((list, key) =>
       <Col key={ key } className={[key === 0||3 ? `${styles.orange}` : `none`, key === 1 ? `${styles.purple}` : `none`, key === 2 ? `${styles.blue}` : `none`]} span={4}>
         <div className={styles.listCard}>
@@ -93,7 +72,7 @@ class Analysis extends React.Component {
         </div>
       )
     }]
-    const data = this.state.tableArray
+    const data = this.props.analysis.tableArray
     const rowSelection = {
       onChange: (selectedRowKeys, selectedRows) => {
         console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
@@ -105,7 +84,7 @@ class Analysis extends React.Component {
     }
     return (
       <div className={styles.analysisBox}>
-        <Spin spinning={this.state.loading}>
+        <Spin spinning={this.props.analysis.loading}>
           {/* analysis data show*/}
           <div className={styles.cardList}>
             { this.listCard() }
