@@ -4,10 +4,6 @@ import { connect } from 'dva'
 
 class Count extends React.Component {
 
-  componentDidMount () {
-    console.log(this)
-  }
-
   render (props) {
     const { dispatch } = this.props
     return (

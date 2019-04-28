@@ -18,7 +18,6 @@ class Login extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.dir(values)
         // 预先存储至localStroage,之后存储至Redux
         const { dispatch } = this.props
         dispatch({

@@ -30,7 +30,6 @@ class Analysis extends React.Component {
 
   // Crad Data Render
   listCard = () => {
-    console.log(this)
     const list = this.props.analysis.list
     const nameList = this.props.analysis.listArray
     const listItem = list.map((list, key) =>

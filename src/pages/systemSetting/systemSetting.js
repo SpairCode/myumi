@@ -1,32 +1,28 @@
 import React from 'react'
 import styles from './systemSetting.css'
 import { Spin, List, Row, Col, Button } from 'antd'
-import axios from 'axios'
+import { connect } from 'dva'
+
+@connect(({ systemSetting }) => ({ systemSetting }))
 
 class SystemSetting extends React.Component {
 
-  state = {
-    loading: true,
-    list: []
-  }
-
   componentDidMount () {
-    this.queryListData()
+    const { dispatch } = this.props
+    dispatch({
+      type: 'systemSetting/fetch'
+    })
   }
 
-  queryListData = () => { 
-    axios('/api/systemSetting/systemSetting', {
-      method: 'GET'
-    }).then((res) => {
-      this.setState({
-        list: res.data.data,
-        loading: false
-      })
+  componentWillUnmount () {
+    const { dispatch } = this.props
+    dispatch({
+      type: 'systemSetting/changeLoading'
     })
   }
 
   Items = () => {
-    const listData = this.state.list
+    const listData = this.props.systemSetting.list
     const Lists = listData.map((lists, key) =>
      <List.Item key={key}>
       <Row style={{ width: '100%', padding: '0px 15px' }}>
@@ -50,7 +46,7 @@ class SystemSetting extends React.Component {
   render () {
     return (
       <div className={styles.systemBox}>
-        <Spin spinning={this.state.loading}>
+        <Spin spinning={this.props.systemSetting.loading}>
           { this.Items() } 
         </Spin>
       </div>

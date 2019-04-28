@@ -11,7 +11,6 @@ class editNoteForm extends React.Component {
     // 1. new Form
     // 2. validate Form
     // 3. will be value pass by  @connect save in noteList array
-    console.log(this.props)
   }
 
   state = {

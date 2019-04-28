@@ -70,10 +70,10 @@ const systemSetting = (req, res) => {
         default: 'Fan'
       }, {
         title: '密码设置',
-        default: '666666'
+        default: '******'
       }, {
         title: '手机设置',
-        default: '18307130014'
+        default: '12345678910'
       }, {
         title: '邮箱设置',
         default: 'spairfan@126.com'
@@ -117,4 +117,8 @@ export async function queryTableData () {
 
 export async function queryBrowseData () {
   return request('/api/analysis/browse')
-} 
+}
+
+export async function querySystemSetting () {
+  return request('/api/systemSetting/systemSetting')
+}

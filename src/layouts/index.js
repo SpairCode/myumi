@@ -26,15 +26,15 @@ function BasicLayout(props) { // child components
                 <div className={styles.logo}> System </div>
                 <Menu theme="light" mode="inline" defaultSelectedKeys={ menuArray } onClick={(e) => { menuArray.push(e.key); menuArray.splice(0, 1); localStorage.setItem('menuArray', JSON.stringify(menuArray)) } }>
                   <Menu.Item key="1">
-                    <Icon type="bars" />
+                    <Icon type="ordered-list" />
                     <span className="nav-text"> <Link to='/analysis/analysis'> 参会列表 </Link> </span>
                   </Menu.Item>
                   <Menu.Item key="2">
-                    <Icon type="appstore" />
+                    <Icon type="bar-chart" />
                     <span className="nav-text"> <Link to='/dataAnalysis/dataAnalysis'> 数据分析 </Link> </span>
                   </Menu.Item>
                   <Menu.Item key="3">
-                    <Icon type="cluster" />
+                    <Icon type="cloud" />
                     <span className="nav-text"> <Link to='/weather/weather'> Weather </Link> </span>
                   </Menu.Item>
                   <Menu.Item key="4">
@@ -54,7 +54,7 @@ function BasicLayout(props) { // child components
                     <span className="nav-text"> <Link to='/meetingMap/meetingMap'> 会议地图 </Link> </span>
                   </Menu.Item>
                   <Menu.Item key="8">
-                    <Icon type="book" />
+                    <Icon type="tags" />
                     <span className="nav-text"> <Link to='/note/note'> 工作便签 </Link> </span>
                   </Menu.Item>
                 </Menu>
