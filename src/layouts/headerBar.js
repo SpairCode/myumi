@@ -10,11 +10,15 @@ class headerBar extends React.Component {
     const menulist = (
       <Menu>
         <Menu.Item>
-          <Icon type="user" /> 个人中心
+          <Link to='/user/user'>
+            <Icon type="user" /> 个人中心
+          </Link>
         </Menu.Item>
         <Menu.Divider />
         <Menu.Item>
-        <Icon type="setting" /> 设置
+          <Link to='/systemSetting/systemSetting'>
+            <Icon type="setting"  /> 设置
+          </Link>
         </Menu.Item>
         <Menu.Divider />
         <Menu.Item>
